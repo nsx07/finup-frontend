@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --base-pink-light: #A61C76;
+    --base-pink-extralight: #bf048d;
+    --base-dark: #2c2f40;
+    --base-medium: #5a758c;
+    --base-light: #a4b0bf;
+}
+
+.p-paginator-bottom {
+    border-radius: 0px 0px 7px 7px !important;
+}
+
+.p-datatable .p-datatable-header {
+    border-radius: 7px 7px 0px 0px;
+}
+
+::-webkit-scrollbar {
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar:vertical {
+    width: 0.5rem;
+    background-blend-mode: darken;
+}
+
+
+::-webkit-scrollbar-track {
+    background:  white;
+}
+
+::-webkit-scrollbar-track:vertical {
+    background:  linear-gradient(180deg,
+     whitesmoke,
+     #020617,
+     #020617,
+     #020617,
+     #020617
+     );
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1d162d;
+    border-radius: 2rem;
+}
+
+@media screen and (max-width: 1300px) {
+    ::-webkit-scrollbar-track:vertical {
+        background:  linear-gradient(180deg,
+         white,
+         #090f21,
+         #090f21,
+         #090f21,
+         #090f21
+         );
+    }
+}
