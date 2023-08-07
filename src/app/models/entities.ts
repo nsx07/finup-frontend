@@ -42,11 +42,13 @@ export class ServiceUser implements IIdentifiable<number> {
 
 export class Schedule implements IIdentifiable<number> {
     id!: number;
-    price!: number;
     note!: string;
+    price!: number;
+    customer!: User;
+    employee!: User;
+    service!: Service;
     startDateTime!: Date;
     finishDateTime!: Date;
-    service!: Service;
 }
 
 export class UserSchedule implements IIdentifiable<number> {

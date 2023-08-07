@@ -32,10 +32,11 @@ export class ServicesComponent {
   constructor( private apiService: ApiService, private formBuilder: FormBuilder, public sc: ScreenHelperService ) {
     console.log(sc.specs);
     
-    apiService.requestFromApi("Service")?.subscribe(x => {
-      this.services = x
+    apiService.requestFromApi("service")?.subscribe(x => {
+      this.services = x;
+      
     })
-    apiService.requestFromApi("ServiceType")?.subscribe(x => {
+    apiService.requestFromApi("serviceType")?.subscribe(x => {
       this.serviceTypes = x
     })
 
@@ -93,7 +94,7 @@ export class ServicesComponent {
 
   confirmType() { 
     const form = this.formType.value;
-    this.apiService.sendToApi("ServiceType", form)?.subscribe(x => {
+    this.apiService.sendToApi("serviceType", form)?.subscribe(x => {
       console.log(x);
       if (x) {
         if (!this.serviceTypes.some(x => x.id === x)) {
@@ -111,7 +112,7 @@ export class ServicesComponent {
     
     console.log(form);
     
-    this.apiService.sendToApi("Service", form)?.subscribe(x => {
+    this.apiService.sendToApi("service", form)?.subscribe(x => {
       console.log(x);
       if (x) {
         if (!this.services.some(x => x.id === x)) {

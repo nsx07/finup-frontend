@@ -26,8 +26,8 @@ export class SchedulerComponent implements OnInit {
   @ViewChild("calendar")
   calendarComponent!: FullCalendarComponent;
   header!: string;
-  clockIcon = faClock.iconName;
 
+  clockIcon = faClock.iconName;
   faPrev = faArrowCircleLeft;
   faNext = faArrowCircleRight;
   faOptions = faCalendarCheck;
@@ -42,7 +42,7 @@ export class SchedulerComponent implements OnInit {
   services: Service[] = [];
   employees: User[] = [];
   customers: User[] = [];
-  schedules: UserSchedule[] = []
+  schedules: Schedule[] = []
   events = new Array();
 
   selectedEmployes = new Array();
@@ -64,16 +64,16 @@ export class SchedulerComponent implements OnInit {
   }
 
   private async loadResources() {
-    this.api.requestFromApi<Service[]>("Service")?.subscribe(
+    this.api.requestFromApi<Service[]>("service")?.subscribe(
       x => this.services = x
     );
-    this.api.requestFromApi<User[]>("User/Customers")?.subscribe(
+    this.api.requestFromApi<User[]>("user")?.subscribe(
       x => this.customers = x
     );
-    this.api.requestFromApi<User[]>("User/Employees")?.subscribe(
+    this.api.requestFromApi<User[]>("user")?.subscribe(
       x => this.employees = x
     );
-    this.api.requestFromApi<UserSchedule[]>("Schedule/Schedules")?.subscribe(
+    this.api.requestFromApi<Schedule[]>("schedule")?.subscribe(
       x => {
         this.schedules = x;
         this.mapSchedulesToEvent(x)
@@ -160,27 +160,27 @@ export class SchedulerComponent implements OnInit {
   //#region Members 'Handling click'
 
   onEventClick(arg: EventClickArg) {
-    this.header = `Editar horário - ${moment(arg.event.extendedProps['schedule']['startDateTime']).format("DD/MM/yy")}`
+    this.header = `Editar horário - ${moment(arg.event.extendedProps['startDateTime']).format("DD/MM/yy")}`
     
     let id = + arg.event._def.publicId;
     let schedule = this.schedules.find(x => x.id === id);
 
     if (schedule) {
       this.form.get("id")?.setValue(id);
-      this.form.get("day")?.setValue(new Date(arg.event.extendedProps['schedule']['startDateTime']).getDate());
-      this.form.get("startDateTime")?.setValue(new Date(arg.event.extendedProps['schedule']['startDateTime']));
-      this.form.get("finishDateTime")?.setValue(new Date(arg.event.extendedProps['schedule']['finishDateTime']));
-      this.form.get("service")?.setValue(schedule["schedule"]["service"])
-      this.form.get("price")?.setValue(schedule["schedule"]["price"])
-      this.form.get("customer")?.setValue(schedule["customer"])
-      this.form.get("schedule")?.setValue(schedule["schedule"])
-      this.form.get("employee")?.setValue(schedule["employee"])
+      this.form.get("day")?.setValue(new Date(arg.event.extendedProps['startDateTime']).getDate());
+      this.form.get("startDateTime")?.setValue(new Date(arg.event.extendedProps['startDateTime']));
+      this.form.get("finishDateTime")?.setValue(new Date(arg.event.extendedProps['finishDateTime']));
+      this.form.get("service")?.setValue(arg.event.extendedProps['service'])
+      this.form.get("price")?.setValue(arg.event.extendedProps['price'])
+      this.form.get("customer")?.setValue(arg.event.extendedProps['customer'])
+      this.form.get("schedule")?.setValue(arg.event.extendedProps['schedule'])
+      this.form.get("employee")?.setValue(arg.event.extendedProps['employee'])
       
       this.visible = true
       this.edit = true;
 
-      console.log(new Date(arg.event.extendedProps['schedule']['startDateTime']),
-      new Date(arg.event.extendedProps['schedule']['finishDateTime']));
+      console.log(new Date(arg.event.extendedProps['startDateTime']),
+      new Date(arg.event.extendedProps['finishDateTime']));
     }
   }
 
@@ -191,8 +191,8 @@ export class SchedulerComponent implements OnInit {
     let schedule = this.schedules.find(x => x.id === id);
 
     if (schedule) {
-      schedule.schedule.startDateTime = arg.event.start?.toISOString() as any;
-      schedule.schedule.finishDateTime = arg.event.end?.toISOString() as any;
+      schedule.startDateTime = arg.event.start?.toISOString() as any;
+      schedule.finishDateTime = arg.event.end?.toISOString() as any;
 
       this.save(schedule);
       
@@ -231,14 +231,14 @@ export class SchedulerComponent implements OnInit {
 
   //#endregion
 
-  mapSchedulesToEvent(schedules: UserSchedule[]) {
+  mapSchedulesToEvent(schedules: Schedule[]) {
     let events: EventInput[] = []
     schedules.forEach(x => {
       events.push({
         id: x.id.toString(),
         title: `${x.employee.name} - ${x.customer.name}`,
-        start: new String(x.schedule.startDateTime).replace("Z", ""),
-        end: new String(x.schedule.finishDateTime).replace("Z", ""),
+        start: new String(x.startDateTime).replace("Z", ""),
+        end: new String(x.finishDateTime).replace("Z", ""),
         extendedProps: {...x}
       })
     })
@@ -250,7 +250,7 @@ export class SchedulerComponent implements OnInit {
   trySave() {
 
     const form = structuredClone(this.form.value);   
-    const schedule = new UserSchedule()
+    const schedule = new Schedule()
 
     // console.log(form);
 
@@ -268,19 +268,18 @@ export class SchedulerComponent implements OnInit {
     
     const scheduleSaved = this.schedules.find(x => x.id === form.id);
 
-    schedule.schedule = scheduleSaved?.schedule ?? new Schedule();
-    schedule.schedule.price = form.price;
-    schedule.schedule.service = Object.assign({}, form.service);
-    schedule.schedule.finishDateTime = form.finishDateTime as any
-    schedule.schedule.startDateTime = form.startDateTime as any
-    schedule.schedule.note = form.note;
+    schedule.price = form.price;
+    schedule.service = Object.assign({}, form.service);
+    schedule.finishDateTime = form.finishDateTime as any
+    schedule.startDateTime = form.startDateTime as any
+    schedule.note = form.note;
 
     // console.log(schedule);
     this.save(schedule)
   }
 
   private save(body: any) {
-    this.api.sendToApi("Schedule/Setup", body)?.subscribe(x => {
+    this.api.sendToApi("schedule", body)?.subscribe(x => {
       console.log(x);
       
       if (x) {
@@ -298,7 +297,7 @@ export class SchedulerComponent implements OnInit {
     
     // console.log(schedule);
 
-    schedule && this.api.sendToApi("Schedule/Cancel", schedule)?.subscribe(x => {
+    schedule && this.api.sendToApi("schedule", schedule)?.subscribe(x => {
       console.log(x);
       
       if (x) {

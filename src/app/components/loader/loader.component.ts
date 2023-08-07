@@ -6,9 +6,7 @@ import { LoaderService } from "../../services/loader.service";
     template: ` 
     <div class="absolute" style="z-index: 99999;" *ngIf="isLoading">
         <div pAnimate enterClass="flip" leaveClass="fadeoutleft" class="fixed w-screen h-screen flex justify-center items-center bg-opacity-30 bg-slate-600">
-            <!-- <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)"></p-progressSpinner>  -->
-            
-            <p-progressSpinner></p-progressSpinner>
+            <p-progressSpinner strokeWidth="1"></p-progressSpinner>
         </div>
     </div>
     `,

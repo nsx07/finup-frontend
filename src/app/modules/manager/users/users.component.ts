@@ -32,10 +32,12 @@ export class UsersComponent {
   users = new Array();
 
   constructor( private apiService: ApiService, private formBuilder: FormBuilder, public sc: ScreenHelperService ) {
-    apiService.requestFromApi("User")?.subscribe(x => {
-      this.users = x
-    })
-    apiService.requestFromApi("UserType")?.subscribe(x => {
+    // apiService.requestFromApi("user")?.subscribe(x => {
+    //   this.users = x
+    // })
+    apiService.requestFromApi("userType")?.subscribe(x => {
+      console.log(x);
+      
       this.userTypes = x
     })
 
@@ -96,7 +98,7 @@ export class UsersComponent {
 
   confirmType() { 
     const form = this.formType.value;
-    this.apiService.sendToApi("UserType", form)?.subscribe(x => {
+    this.apiService.sendToApi("userType", form)?.subscribe(x => {
       console.log(x);
       if (x) {
         if (!this.userTypes.some(x => x.id === x)) {
@@ -114,7 +116,7 @@ export class UsersComponent {
     
     console.log(form);
     
-    this.apiService.sendToApi("User", form)?.subscribe(x => {
+    this.apiService.sendToApi("user", form)?.subscribe(x => {
       console.log(x);
       if (x && x != 0) {
         if (!this.users.some(x => x.id === x)) {
