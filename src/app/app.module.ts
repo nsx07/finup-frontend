@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { ComponentsModule } from './components/components.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 
@@ -26,20 +26,12 @@ import { MessageModule } from "primeng/message"
 import { ToastModule } from "primeng/toast"
 /** */
 
-import { SchedulerComponent } from './pages/scheduler/scheduler.component';
-import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component'
 import { ApiService } from './services/api-service.service';
-import { ManagerRoutingModule } from './modules/manager/manager-routing.module';
-import { ManagerModule } from './modules/manager/manager.module';
 import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SchedulerComponent,
-    LoginComponent,
-    HomeComponent
+    AppComponent
   ],
   schemas: [
     NO_ERRORS_SCHEMA
@@ -50,8 +42,8 @@ import { MessageService } from 'primeng/api';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ManagerRoutingModule,
-    FontAwesomeModule,
+    
+    
     BrowserAnimationsModule,
     
     
@@ -77,8 +69,7 @@ import { MessageService } from 'primeng/api';
       registrationStrategy: 'registerWhenStable:30000'
     }),
 
-    ComponentsModule,
-    ManagerModule
+    ComponentsModule
   ],
   providers: [
     HttpClient,
