@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { PrimeNGConfig } from 'primeng/api';
-import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-root',
@@ -34,11 +32,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
 
   constructor(private primeNG: PrimeNGConfig, private router: Router) {
-    // moment.updateLocale("pt-br", null)
-
     moment.locale("pt-br")
-    
-    
     primeNG.overlayOptions = {
       appendTo: "body"
     }
