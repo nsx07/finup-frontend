@@ -18,7 +18,6 @@ import { PrimeNGConfig } from 'primeng/api';
     <app-header *ngIf="!isLogin"></app-header>
 
     <div class="relative">
-      <Div style="height: 1000vh"></Div>
       <router-outlet></router-outlet>
     </div>
 
