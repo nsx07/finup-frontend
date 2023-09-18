@@ -28,10 +28,14 @@ import { ToastModule } from "primeng/toast"
 
 import { ApiService } from './services/api-service.service';
 import { MessageService } from 'primeng/api';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    SignupComponent
   ],
   schemas: [
     NO_ERRORS_SCHEMA
