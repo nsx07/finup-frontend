@@ -9,14 +9,10 @@ import { LocalStorageService } from './local-storage.service';
 @Injectable({providedIn: 'root'})
 export class ApiService {
 
-  
   private baseUrl = environment.apiUrl;
-  private cache!: Map<string, any>;
   private offline = new Subject();
 
   constructor(private httpClient: HttpClient, private loader: LoaderService, private localStorage: LocalStorageService) {
-    console.log(this.isConnect);
-
     setInterval(() => {
       this.isConnect
     }, 333);
@@ -84,20 +80,6 @@ export class ApiService {
       this.loader.hide();
       return result;
     }));
-  }
-
-  public addSubscriber(sub: PushSubscription) {
-    this.loader.show()
-    
-    const subscription = {
-      id: 0,
-      subscriptionObject: JSON.stringify(sub),
-      user : this.localStorage.get("user")
-    }
-
-    console.log(subscription);
-    
-    return this.httpClient.post(this.baseUrl + "User/Subscribe", subscription);
   }
   
 }
