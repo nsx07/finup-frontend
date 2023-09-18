@@ -5,13 +5,16 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { LoaderComponent } from './loader/loader.component';
 import { AnimateModule } from 'primeng/animate';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
-    LoaderComponent
+    LoaderComponent,
+    HeaderComponent
   ],
   exports: [
-    LoaderComponent
+    LoaderComponent,
+    HeaderComponent
   ],
   imports: [
     ProgressSpinnerModule,

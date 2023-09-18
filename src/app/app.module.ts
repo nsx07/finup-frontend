@@ -38,15 +38,11 @@ import { MessageService } from 'primeng/api';
   ],
   imports: [
     FormsModule,
-    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    
-    
+    ReactiveFormsModule,
     BrowserAnimationsModule,
-    
-    
 
     ToastModule,
     DialogModule,

@@ -9,16 +9,13 @@ import { LocalStorageService } from './local-storage.service';
 @Injectable({providedIn: 'root'})
 export class ApiService {
 
-  
   private baseUrl = environment.apiUrl;
-  private cache!: Map<string, any>;
   private offline = new Subject();
 
   constructor(private httpClient: HttpClient, private loader: LoaderService, private localStorage: LocalStorageService) {
     setInterval(() => {
       this.isConnect
     }, 333);
-
   }
 
   private connected!: boolean;
