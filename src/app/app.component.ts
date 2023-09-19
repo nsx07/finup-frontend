@@ -15,7 +15,7 @@ import { PrimeNGConfig } from 'primeng/api';
     
     <loader></loader>
     <p-toast></p-toast>
-    <app-header *ngIf="!isLogin"></app-header>
+    <app-header></app-header>
 
     <div class="relative">
       <router-outlet></router-outlet>
