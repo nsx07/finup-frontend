@@ -1,45 +1,40 @@
-import { NO_ERRORS_SCHEMA, NgModule, isDevMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA, NgModule, isDevMode } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { ServiceWorkerModule } from "@angular/service-worker";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
 
-import { ComponentsModule } from './components/components.module';
-import { FullCalendarModule } from '@fullcalendar/angular';
+import { ComponentsModule } from "./components/components.module";
+import { FullCalendarModule } from "@fullcalendar/angular";
 
 /**PrimeNG */
 import { InputTextareaModule } from "primeng/inputtextarea";
-import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { OverlayPanelModule } from "primeng/overlaypanel";
 import { InputTextModule } from "primeng/inputtext";
 import { DropdownModule } from "primeng/dropdown";
 import { CalendarModule } from "primeng/calendar";
 import { DialogModule } from "primeng/dialog";
-import { ButtonModule } from "primeng/button"
-import { CheckboxModule } from "primeng/checkbox"
-import { AutoCompleteModule } from 'primeng/autocomplete';
-import { SplitButtonModule } from 'primeng/splitbutton';
-import { MessageModule } from "primeng/message"
-import { ToastModule } from "primeng/toast"
+import { ButtonModule } from "primeng/button";
+import { CheckboxModule } from "primeng/checkbox";
+import { AutoCompleteModule } from "primeng/autocomplete";
+import { SplitButtonModule } from "primeng/splitbutton";
+import { MessageModule } from "primeng/message";
+import { ToastModule } from "primeng/toast";
 /** */
 
-import { ApiService } from './services/api-service.service';
-import { MessageService } from 'primeng/api';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
+import { ApiService } from "./services/api-service.service";
+import { MessageService } from "primeng/api";
+import { LoginComponent } from "./pages/login/login.component";
+import { SignupComponent } from "./pages/signup/signup.component";
+import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    SignupComponent
-  ],
-  schemas: [
-    NO_ERRORS_SCHEMA
-  ],
+  declarations: [AppComponent, LoginComponent, SignupComponent],
+  schemas: [NO_ERRORS_SCHEMA],
   imports: [
     FormsModule,
     BrowserModule,
@@ -62,21 +57,16 @@ import { SignupComponent } from './pages/signup/signup.component';
     InputTextareaModule,
 
     FullCalendarModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+    ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: "registerWhenStable:30000",
     }),
 
-    ComponentsModule
+    ComponentsModule,
   ],
-  providers: [
-    HttpClient,
-    ApiService,
-    MessageService
-  ],
-  bootstrap: [AppComponent]
+  providers: [HttpClient, ApiService, MessageService, FormDeactivateGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
- }
+export class AppModule {}
