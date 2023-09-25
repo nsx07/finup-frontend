@@ -33,7 +33,7 @@ import { PrimeNGConfig } from "primeng/api";
         <router-outlet></router-outlet>
       </div>
 
-      <div class="w-100 flex flex-col ali">
+      <!-- <div class="w-100 flex flex-col ali">
         <img class="self-center" src="../assets/logo/fine-up-logo.png" alt="" />
         <div class="self-center flex w-4/12 gap-2 mt-2">
           <a
@@ -52,7 +52,7 @@ import { PrimeNGConfig } from "primeng/api";
             Criar usuário
           </a>
         </div>
-      </div>
+      </div> -->
 
       <div
         class="absolute inset-x-0 bottom-0 -z-10 transform-gpu overflow-hidden blur-3xl sm:bottom-10 "

@@ -31,10 +31,16 @@ import { MessageService } from "primeng/api";
 import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
 import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
-import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { CrudModule } from "./crud/crud.module";
+import { InvoiceTableComponent } from "./pages/invoice-table/invoice-table.component";
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent, InvoiceComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    InvoiceTableComponent,
+  ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
     FormsModule,
@@ -57,6 +63,7 @@ import { InvoiceComponent } from './pages/invoice/invoice.component';
     OverlayPanelModule,
     InputTextareaModule,
 
+    CrudModule,
     FullCalendarModule,
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: !isDevMode(),

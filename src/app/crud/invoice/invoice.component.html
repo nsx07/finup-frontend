@@ -1,0 +1,100 @@
+<div class="flex justify-center align-middle h-screen bg-gray-dark text-white">
+  <div class="py-10 px-28 w-6/12">
+    <main class="flex flex-col gap-10 w-full mt-28">
+      <header class="flex flex-col gap-4 w-full max-w-[350px]:">
+        <h1 class="text-4xl font-bold">Adicione uma fatura a sua conta</h1>
+        <p class="font-normal text-base">Planeje seus pagamentos do mês.</p>
+      </header>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/2 px-3 md:mb-0">
+            <label
+              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+              for="description"
+            >
+              Descrição
+            </label>
+            <input
+              [ngClass]="{
+                'border-red-500':
+                  form.get('description')?.invalid &&
+                  form.get('description')?.touched
+              }"
+              class="appearance-none block w-full bg-gray-200 text-gray-700 border-gray-200 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="description"
+              type="text"
+              formControlName="description"
+            />
+          </div>
+
+          <div class="w-full md:w-1/2 px-3">
+            <label
+              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+              for="value"
+            >
+              Valor
+            </label>
+            <input
+              [ngClass]="{
+                'border-red-500':
+                  form.get('value')?.invalid && form.get('value')?.touched
+              }"
+              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="value"
+              type="text"
+              formControlName="value"
+              placeholder="R$"
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/2 px-3 md:mb-0">
+            <label
+              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+              for="date"
+            >
+              Descrição
+            </label>
+            <input
+              [ngClass]="{
+                'border-red-500':
+                  form.get('date')?.invalid && form.get('date')?.touched
+              }"
+              class="appearance-none block w-full bg-gray-200 text-gray-700 border-gray-200 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="date"
+              type="date"
+              formControlName="date"
+            />
+          </div>
+
+          <div class="w-full md:w-1/2 px-3">
+            <label
+              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+              for="status"
+            >
+              Status
+            </label>
+            <input
+              [ngClass]="{
+                'border-red-500':
+                  form.get('status')?.invalid && form.get('status')?.touched
+              }"
+              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="status"
+              type="text"
+              formControlName="status"
+            />
+          </div>
+        </div>
+
+        <button
+          class="bg-blue-light hover:bg-white hover:text-gray-dark text-white font-bold py-2 px-4 rounded w-full"
+          type="submit"
+        >
+          Adicionar fatura
+        </button>
+      </form>
+    </main>
+  </div>
+</div>
