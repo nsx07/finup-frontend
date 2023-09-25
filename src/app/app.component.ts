@@ -27,7 +27,7 @@ import { PrimeNGConfig } from "primeng/api";
 
       <loader></loader>
       <p-toast></p-toast>
-      <app-header *ngIf="!isLogin"></app-header>
+      <app-header *ngIf="showHeader"></app-header>
 
       <div class="relative">
         <router-outlet></router-outlet>
@@ -54,7 +54,15 @@ export class AppComponent {
     };
   }
 
-  get isLogin() {
+  private get isLogin() {
     return this.router.url.includes("login");
+  }
+
+  private get isSignup() {
+    return this.router.url.includes("signup");
+  }
+
+  public get showHeader() {
+    return !this.isLogin && !this.isSignup;
   }
 }
