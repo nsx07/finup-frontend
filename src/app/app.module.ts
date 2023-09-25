@@ -31,9 +31,10 @@ import { MessageService } from "primeng/api";
 import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
 import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
+import { InvoiceComponent } from './pages/invoice/invoice.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent],
+  declarations: [AppComponent, LoginComponent, SignupComponent, InvoiceComponent],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
     FormsModule,
