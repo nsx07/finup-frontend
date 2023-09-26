@@ -1,25 +1,103 @@
-<div class="flex justify-center width-full h-screen bg-gray-dark text-white">
-    <div class="sm:w-1/2 w-full p-2">
-        <h2>Usuário</h2>
-        <form [formGroup]="form" class="grid grid-cols-12 gap-2">
+<div class="flex justify-center align-middle h-screen bg-gray-dark text-white">
+    <div class="py-10 px-28 w-6/12">
+      <main class="flex flex-col gap-10 w-full mt-28">
+        <header class="flex flex-col gap-4 w-full max-w-[350px]:">
+          <h1 class="text-4xl font-bold">Usuários </h1>
+          <i class="fa-solid fa-user ml-2"></i> 
 
-            <div class="col-span-12 md:col-span-6">
-                <input type="text" placeholder="Nome">
+          
+        </header>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 md:mb-0">
+              <label
+                class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                for="name"
+              >
+                Nome
+              </label>
+              <input
+                [ngClass]="{
+                  'border-red-500':
+                    form.get('name')?.invalid &&
+                    form.get('name')?.touched
+                }"
+                class="appearance-none block w-full bg-gray-200 text-gray-700 border-gray-200 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="name"
+                type="text"
+                formControlName="name"
+              />
             </div>
-            <div class="col-span-12 md:col-span-6">
-                <input type="text" placeholder="Email">
-                
+  
+            <div class="w-full md:w-1/2 px-3">
+              <label
+                class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                for="email"
+              >
+                Email
+              </label>
+              <input
+                [ngClass]="{
+                  'border-red-500':
+                    form.get('email')?.invalid && form.get('email')?.touched
+                }"
+                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="email"
+                type="email"
+                formControlName="email"
+                placeholder="dev@test.com"
+              />
             </div>
-            <div class="col-span-12 md:col-span-6">
-                <input type="text" placeholder="Senha">
-                
+          </div>
+  
+          <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full md:w-1/2 px-3 md:mb-0">
+              <label
+                class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                for="password"
+              >
+                Senha
+              </label>
+              <input
+                [ngClass]="{
+                  'border-red-500':
+                    form.get('password')?.invalid && form.get('password')?.touched
+                }"
+                class="appearance-none block w-full bg-gray-200 text-gray-700 border-gray-200 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="password"
+                type="password"
+                formControlName="password"
+              />
             </div>
-            <div class="col-span-12 md:col-span-6">
-                <input type="text" placeholder="Confirmar senha">
-
+  
+            <div class="w-full md:w-1/2 px-3">
+              <label
+                class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
+                for="confirm"
+              >
+                Confirmar Senha
+              </label>
+              <input
+                [ngClass]="{
+                  'border-red-500':
+                    form.get('confirm')?.invalid && form.get('confirm')?.touched
+                }"
+                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="confirm"
+                type="text"
+                formControlName="confirm"
+              />
             </div>
-
+          </div>
+  
+          <button
+            class="bg-blue-light hover:bg-white hover:text-gray-dark text-white font-bold py-2 px-4 rounded w-full"
+            type="submit"
+          >
+            Adicionar usuário
+          </button>
         </form>
+      </main>
     </div>
   </div>
   

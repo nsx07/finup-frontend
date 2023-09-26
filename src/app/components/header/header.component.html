@@ -2,12 +2,14 @@
   class="h-20 w-full md:h-16 p-2 bg-opacity-80 bg-transparent flex justify-center"
 >
   <div class="w-10/12 flex justify-between items-center">
-    <img class="h-12" src="../../../assets/logo/fine-up-favicon.png" alt="" />
+    <img class="h-12 cursor-pointer" src="../../../assets/logo/fine-up-favicon.png" alt="" [routerLink]="['/']"/>
     <div class="text-white flex gap-6">
       <a [routerLink]="['/addInvoice']">Adicionar fatura</a>
       <a [routerLink]="['/invoice']">Faturas</a>
-      <a [routerLink]="['/addInvoice']">Nova meta</a>
-      <a [routerLink]="['/invoice']">Metas</a>
+      <a [routerLink]="['/goal']">Nova meta</a>
+      <a [routerLink]="['/goalTable']">Metas</a>
+      <a [routerLink]="['/user']">Usuário</a>
+      <a [routerLink]="['/userTable']">Usuários</a>
     </div>
   </div>
 </nav>

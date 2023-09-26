@@ -9,12 +9,16 @@ import { CrudRoutingModule } from "./crud-routing.module";
 import { InvoiceComponent } from "./invoice/invoice.component";
 import { ComponentsModule } from "../components/components.module";
 import { ReactiveFormsModule } from "@angular/forms";
+import { UserTableComponent } from './user-table/user-table.component';
+import { GoalTableComponent } from './goal-table/goal-table.component';
 
 @NgModule({
   declarations: [
     GoalComponent,
     UserComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    UserTableComponent,
+    GoalTableComponent
   ],
   imports: [
     CommonModule,
