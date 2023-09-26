@@ -32,9 +32,10 @@ import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
 import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
 import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { HomeComponent } from "./pages/home/home.component";
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent, InvoiceComponent],
+  declarations: [AppComponent, LoginComponent, SignupComponent, InvoiceComponent, HomeComponent],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
     FormsModule,

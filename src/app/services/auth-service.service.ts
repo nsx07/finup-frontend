@@ -15,7 +15,7 @@ import { Platform } from '@angular/cdk/platform';
 export class AuthService {
 
   private logged = false;
-  private interval!: NodeJS.Timer;
+  private interval!: any;
   private baseUrl = environment.apiUrl;
   public tokenIsValid = new Subject<boolean>();
 

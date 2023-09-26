@@ -5,6 +5,8 @@ import { CommonModule } from "@angular/common";
 import { SignupComponent } from "./pages/signup/signup.component";
 import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
 import { LoginComponent } from "./pages/login/login.component";
+import { AuthService } from "./services/auth-service.service";
+import { HomeComponent } from "./pages/home/home.component";
 
 const routes: Routes = [
   {
@@ -13,6 +15,8 @@ const routes: Routes = [
     canDeactivate: [FormDeactivateGuard],
   },
   { path: "login", component: LoginComponent },
+  { path: "home", component: HomeComponent },
+  { path: "crud", loadChildren: () => import("./crud/crud.module").then(x => x.CrudModule) }
 ];
 
 @NgModule({
