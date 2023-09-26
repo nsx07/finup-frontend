@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CrudRoutingModule } from './crud-routing.module';
 import { GoalComponent } from './goal/goal.component';
 import { UserComponent } from './user/user.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
+
+import { CrudRoutingModule } from "./crud-routing.module";
+import { InvoiceComponent } from "./invoice/invoice.component";
+import { ComponentsModule } from "../components/components.module";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
     GoalComponent,
-    UserComponent
+    UserComponent,
+    InvoiceComponent
   ],
   imports: [
     CommonModule,
@@ -18,4 +22,4 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ]
 })
-export class CrudModule { }
+export class CrudModule {}
