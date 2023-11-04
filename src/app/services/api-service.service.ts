@@ -41,9 +41,6 @@ export class ApiService {
       apiUrl += query;
     }
 
-    if (!this.isConnect) {
-      return null;
-    } else
     return this.httpClient.get<T>(apiUrl).pipe(map(result => {
       this.loader.hide();
       console.log(result);
@@ -55,10 +52,7 @@ export class ApiService {
   public sendToApi(endpoint: string, body: any) {
     let apiUrl = this.baseUrl + `${endpoint}`;
     this.loader.show()
-
-    if (!this.isConnect) {
-      return null;
-    } else 
+ 
     return this.httpClient.post(apiUrl, body).pipe(take(1)).pipe(map(result => {
       this.loader.hide();
       return result;
@@ -73,9 +67,6 @@ export class ApiService {
       apiUrl += query;
     }
 
-    if (!this.isConnect) {
-      return null;
-    } else
     return this.httpClient.delete(apiUrl).pipe(take(1)).pipe(map(result => {
       this.loader.hide();
       return result;

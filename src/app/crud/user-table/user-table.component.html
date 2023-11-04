@@ -10,10 +10,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+        <tr *ngFor="let user of users" class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
           
-          <td class="px-6 py-4">Test</td>
-          <td class="px-6 py-4">da Silva</td>
+          <td class="px-6 py-4">{{user.name}}</td>
+          <td class="px-6 py-4">{{user.email}}</td>
           <td class="px-6 py-4">
             <a
               href="#"
