@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormBaseComponent } from '../../shared/form-base.component';
 import { FormValidators } from '../../shared/form-validators';
+import { ApiService } from '../../services/api-service.service';
 
 @Component({
   selector: 'app-goal',
@@ -10,7 +11,7 @@ import { FormValidators } from '../../shared/form-validators';
 })
 export class GoalComponent extends FormBaseComponent implements OnInit {
   
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private apiService: ApiService) {
     super();
   }
   
@@ -28,8 +29,20 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
       description: ["", [Validators.required]]
     });
   }
+    
 
   override submit(): void {
-    throw new Error('Method not implemented.');
+    const form = this.form.value;
+
+    this.apiService.sendToApi("goal/save", form).subscribe({
+        next: (data) => {
+          console.log(data);
+          if (data) {
+            this.form.reset();
+
+          }
+        }
+      })
+    }
   }
-}
+

@@ -1,39 +1,39 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-48 mt-10">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead
-        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-      >
-        <tr>
-            <th scope="col" class="px-6 py-3">Nome</th>
-          
-          <th scope="col" class="px-6 py-3">Valor</th>
-          <th scope="col" class="px-6 py-3">Data início</th>
-          <th scope="col" class="px-6 py-3">Data fim</th>
-          <th scope="col" class="px-6 py-3">Status</th>
-          <th scope="col" class="px-6 py-3"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-          <th
-            scope="row"
-            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+          <th scope="col" class="px-6 py-3">Nome</th>
+        
+        <th scope="col" class="px-6 py-3">Valor</th>
+        <th scope="col" class="px-6 py-3">Data início</th>
+        <th scope="col" class="px-6 py-3">Data fim</th>
+        <th scope="col" class="px-6 py-3">Status</th>
+        <th scope="col" class="px-6 py-3">Descricao</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700" *ngFor="let goal of goals">
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{goal.name}}
+        </th>
+        <td class="px-6 py-4">{{goal.values}}</td>
+        <td class="px-6 py-4">{{goal.startDate}}</td>
+        <td class="px-6 py-4">{{goal.finishDate}}</td>
+        <td class="px-6 py-4">{{goal.status}}</td>
+        <td class="px-6 py-4">{{goal.status}}</td>
+        <td class="px-6 py-4">
+          <a
+            href="#"
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            >Edit</a
           >
-            Cofre Golf MK5
-          </th>
-          <td class="px-6 py-4">R$120.000</td>
-          <td class="px-6 py-4">10/10/23</td>
-          <td class="px-6 py-4">10/10/24</td>
-          <td class="px-6 py-4">Pendente</td>
-          <td class="px-6 py-4">
-            <a
-              href="#"
-              class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-              >Edit</a
-            >
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
