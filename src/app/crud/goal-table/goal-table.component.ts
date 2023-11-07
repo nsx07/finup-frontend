@@ -1,26 +1,21 @@
-import { Component } from '@angular/core';
-import { ApiService } from '../../services/api-service.service';
+import { Component } from "@angular/core";
+import { ApiService } from "../../services/api-service.service";
 
 @Component({
-  selector: 'app-goal-table',
-  templateUrl: './goal-table.component.html',
-  styleUrls: ['./goal-table.component.scss']
+  selector: "app-goal-table",
+  templateUrl: "./goal-table.component.html",
+  styleUrls: ["./goal-table.component.scss"],
 })
 export class GoalTableComponent {
+  goals: any[] = [];
 
-  goals: any[] = []
-
-  constructor(private apiService: ApiService) {
-    
-  }
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.requestFromApi("goals/getAll").subscribe({
+    this.apiService.requestFromApi("goal/getAll").subscribe({
       next: (data) => {
-        this.goals = data
-      }
-    })
+        this.goals = data;
+      },
+    });
   }
-
-
 }
