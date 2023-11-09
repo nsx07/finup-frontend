@@ -21,7 +21,7 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
   private createForm() {
     this.form = this.fb.group({
       name: ["", [Validators.required]],
-      value: ["", [Validators.required]],
+      amount: ["", [Validators.required]],
       status: ["Não atingido"],
       startDate: ["", [Validators.required]],
       finishDate: ["", [Validators.required]],
