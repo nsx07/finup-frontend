@@ -31,7 +31,7 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
 
   override submit(): void {
     const form = this.form.value;
-    console.log("aa");
+   
 
     this.apiService.sendToApi("goal/save", form).subscribe({
       next: (data) => {
