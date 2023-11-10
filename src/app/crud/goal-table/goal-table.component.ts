@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ApiService } from "../../services/api-service.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-goal-table",
@@ -9,7 +10,7 @@ import { ApiService } from "../../services/api-service.service";
 export class GoalTableComponent {
   goals: any[] = [];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchGoals();
@@ -23,6 +24,10 @@ export class GoalTableComponent {
     });
   }
 
+  onEdit(selectGoal: any): void {
+    this.router.navigate(["goal", selectGoal]);
+  }
+
   onDelete(selectedGoal: any): void {
     if (confirm("Are you sure you want to delete this goal?")) {
       this.apiService
@@ -30,7 +35,7 @@ export class GoalTableComponent {
         .subscribe({
           next: () => {
             console.log("Goal deleted successfully");
-            this.fetchGoals(); // Atualiza a lista após a deleção
+            this.fetchGoals();
           },
           error: (error) => {
             console.error("Error deleting goal:", error);
