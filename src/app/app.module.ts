@@ -24,6 +24,7 @@ import { AutoCompleteModule } from "primeng/autocomplete";
 import { SplitButtonModule } from "primeng/splitbutton";
 import { MessageModule } from "primeng/message";
 import { ToastModule } from "primeng/toast";
+import { CardModule } from 'primeng/card';
 /** */
 
 import { ApiService } from "./services/api-service.service";
@@ -66,6 +67,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     AutoCompleteModule,
     OverlayPanelModule,
     InputTextareaModule,
+    CardModule,
 
     CrudModule,
     FullCalendarModule,
