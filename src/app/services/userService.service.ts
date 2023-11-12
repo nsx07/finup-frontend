@@ -1,0 +1,18 @@
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+
+@Injectable({
+  providedIn: "root",
+})
+export class UserService {
+  private apiUrl = "http://localhost:8080"; // Substitua pela URL do seu backend Spring Boot.
+
+  constructor(private http: HttpClient) {}
+
+  createUser(user: any) {
+    return this.http.post(`${this.apiUrl}/user/save`, user);
+  }
+  logUser(user: any) {
+    return this.http.get(`${this.apiUrl}/user/login`, user);
+  }
+}

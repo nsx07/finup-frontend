@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-
-import { FormValidators } from "../../shared/form-validators";
+import { UserService } from "../../services/userService.service";
 import Swal from "sweetalert2";
 import { FormBaseComponent } from "../../shared/form-base.component";
 import { IFormCanDeactivate } from "../../guards/iform-candeactivate";
@@ -11,35 +10,54 @@ import { IFormCanDeactivate } from "../../guards/iform-candeactivate";
   templateUrl: "./signup.component.html",
   styleUrls: ["./signup.component.scss"],
 })
-export class SignupComponent
-  extends FormBaseComponent
-  implements IFormCanDeactivate
-{
+export class SignupComponent extends FormBaseComponent implements IFormCanDeactivate {
   private formChanges: boolean = false;
   private formSubmitted = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userService: UserService) {
     super();
   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      firstName: [null, [Validators.required]],
-      lastName: [null, [Validators.required]],
+      name: [null, [Validators.required]],
+      dateBirth: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
-      password: [null, [Validators.required, FormValidators.passwordValidator]],
-      confirmPassword: [null, [FormValidators.equalsTo("password")]],
+      password: [null, [Validators.required]],
+      confirmPassword: [null],
     });
+
+    this.form.get("confirmPassword")?.setValidators([
+      Validators.required,
+      //FormValidators.equalsTo("password"),
+    ]);
 
     this.form.valueChanges.subscribe(() => (this.formChanges = true));
   }
 
   submit() {
     this.formSubmitted = true;
-    let valueSubmit = Object.assign({}, this.form.value);
-    console.log(valueSubmit);
+    const valueSubmit = Object.assign({}, this.form.value);
 
-    // TODO: Add user to database
+    this.userService.createUser(valueSubmit).subscribe(
+      (response) => {
+        Swal.fire({
+          title: "Sucesso!",
+          text: "Usuário criado com sucesso!",
+          icon: "success",
+        }).then(() => {
+          // Redirecione o usuário ou faça qualquer outra ação necessária
+        });
+      },
+      (error) => {
+        console.error("Erro ao criar o usuário", error);
+        Swal.fire({
+          title: "Erro",
+          text: "Ocorreu um erro ao criar o usuário.",
+          icon: "error",
+        });
+      }
+    );
   }
 
   canChangeRoute() {
@@ -61,7 +79,6 @@ export class SignupComponent
         });
       });
     }
-
     return true;
   }
 
