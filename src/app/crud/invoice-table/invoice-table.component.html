@@ -11,7 +11,7 @@
         <th scope="col" class="px-6 py-3">Ação</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody  *ngFor="let invoice of invoices">
       <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
         <th
           scope="row"
@@ -19,9 +19,10 @@
         >
           Internet
         </th>
-        <td class="px-6 py-4">R$120.00</td>
-        <td class="px-6 py-4">10/10/23</td>
-        <td class="px-6 py-4">Pendente</td>
+        <td class="px-6 py-4">{{invoice.description}}</td>
+        <td class="px-6 py-4">{{invoice.value}}</td>
+        <td class="px-6 py-4">{{invoice.date}}</td>
+        <td class="px-6 py-4">{{invoice.status}}</td>
         <td class="px-6 py-4">
           <a
             href="#"

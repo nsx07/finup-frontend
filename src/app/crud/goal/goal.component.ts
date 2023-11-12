@@ -46,8 +46,6 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
     });
   }
 
-  private loadGoalDetails() {
-    this.apiService.requestFromApi(`goal/getById/${this.goalId}`).subscribe({
       next: (data) => {
         this.form.patchValue({
           name: data.name,

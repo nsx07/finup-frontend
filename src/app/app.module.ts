@@ -32,7 +32,7 @@ import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
 import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
 import { CrudModule } from "./crud/crud.module";
-import { InvoiceTableComponent } from "./pages/invoice-table/invoice-table.component";
+import { InvoiceTableComponent } from "./crud/invoice-table/invoice-table.component";
 import { HomeComponent } from "./pages/home/home.component";
 
 @NgModule({
