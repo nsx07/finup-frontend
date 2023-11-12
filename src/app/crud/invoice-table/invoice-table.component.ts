@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ApiService } from "../../services/api-service.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-invoice-table",
@@ -9,13 +10,37 @@ import { ApiService } from "../../services/api-service.service";
 export class InvoiceTableComponent {
   invoices: any[] = [];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
+    this.fetchGoals();
+  }
+
+  fetchGoals(): void {
     this.apiService.requestFromApi("bill/getAll").subscribe({
       next: (data) => {
         this.invoices = data;
       },
     });
+  }
+
+  onEdit(selectGoal: any): void {
+    this.router.navigate(["invoice", selectGoal]);
+  }
+
+  onDelete(selectedGoal: any): void {
+    if (confirm("Are you sure you want to delete this goal?")) {
+      this.apiService
+        .deleteFromApi("bill/delete/" + selectedGoal.id)
+        .subscribe({
+          next: () => {
+            console.log("Goal deleted successfully");
+            this.fetchGoals();
+          },
+          error: (error) => {
+            console.error("Error deleting goal:", error);
+          },
+        });
+    }
   }
 }

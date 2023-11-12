@@ -6,28 +6,32 @@
       <tr>
         <th scope="col" class="px-6 py-3">Descrição</th>
         <th scope="col" class="px-6 py-3">Valor</th>
-        <th scope="col" class="px-6 py-3">Data de vencimento</th>
+        <th scope="col" class="px-6 py-3">Data</th>
         <th scope="col" class="px-6 py-3">Status</th>
-        <th scope="col" class="px-6 py-3">Ação</th>
+        <th scope="col" class="px-6 py-3">Ações</th>
       </tr>
     </thead>
-    <tbody  *ngFor="let invoice of invoices">
+    <tbody *ngFor="let invoice of invoices">
       <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
         <th
           scope="row"
           class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          Internet
+          {{ invoice.description }}
         </th>
-        <td class="px-6 py-4">{{invoice.description}}</td>
-        <td class="px-6 py-4">{{invoice.value}}</td>
-        <td class="px-6 py-4">{{invoice.date}}</td>
-        <td class="px-6 py-4">{{invoice.status}}</td>
+        <td class="px-6 py-4">{{ invoice.value }}</td>
+        <td class="px-6 py-4">{{ invoice.date }}</td>
+        <td class="px-6 py-4">{{ invoice.status }}</td>
         <td class="px-6 py-4">
           <a
-            href="#"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3"
+            (click)="onEdit(invoice.id)"
             >Edit</a
+          >
+          <a
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            (click)="onDelete(invoice)"
+            >Delete</a
           >
         </td>
       </tr>

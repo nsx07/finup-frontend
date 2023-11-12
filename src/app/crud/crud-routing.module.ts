@@ -16,6 +16,10 @@ const routes: Routes = [
     path: "addInvoice",
     component: InvoiceComponent,
   },
+  {
+    path: "invoice/:id",
+    component: InvoiceComponent,
+  },
 ];
 
 @NgModule({
