@@ -29,6 +29,7 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
       this.goalId = params["id"];
       this.isEditing = !!this.goalId;
       if (this.isEditing) {
+        console.log("Editing goal:", this.goalId);
         this.loadGoalDetails();
       }
     });
@@ -67,17 +68,19 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
     const form = this.form.value;
 
     if (this.isEditing) {
-      this.apiService.updateApi("goal/update", form).subscribe({
-        next: (data) => {
-          console.log(data);
-          if (data) {
-            this.form.reset();
-          }
-        },
-        error: (error) => {
-          console.error("Erro ao enviar dados para a API:", error);
-        },
-      });
+      this.apiService
+        .updateApi("goal/update", { ...form, id: this.goalId })
+        .subscribe({
+          next: (data) => {
+            console.log(data);
+            if (data) {
+              this.form.reset();
+            }
+          },
+          error: (error) => {
+            console.error("Erro ao enviar dados para a API:", error);
+          },
+        });
     } else {
       this.apiService.sendToApi("goal/save", form).subscribe({
         next: (data) => {
