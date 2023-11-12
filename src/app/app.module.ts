@@ -34,6 +34,7 @@ import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
 import { CrudModule } from "./crud/crud.module";
 import { InvoiceTableComponent } from "./crud/invoice-table/invoice-table.component";
 import { HomeComponent } from "./pages/home/home.component";
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { HomeComponent } from "./pages/home/home.component";
     LoginComponent,
     SignupComponent,
     InvoiceTableComponent,
+    DashboardComponent,
   ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
