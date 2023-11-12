@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { FormBaseComponent } from "../../shared/form-base.component";
-import { FormValidators } from "../../shared/form-validators";
 import { ApiService } from "../../services/api-service.service";
 import { ActivatedRoute } from "@angular/router";
 
@@ -46,6 +45,8 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
     });
   }
 
+  private loadGoalDetails() {
+    this.apiService.requestFromApi(`goal/getById/${this.goalId}`).subscribe({
       next: (data) => {
         this.form.patchValue({
           name: data.name,
