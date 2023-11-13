@@ -47,13 +47,11 @@ export class AuthService {
 
     if (!token) {
       this.logged = false
+      this.localStorage.clear();
     } else {
       this.logged = true
+      this.localStorage.set("token", token);
     }
-
-    
-
-    this.localStorage.set("token", token);
   }
 
   public get TokenData() {
@@ -115,11 +113,11 @@ export class AuthService {
     }))
   }
 
-  public logout() {
+  public logout(message =  "Até breve...") {
     this.Token = null;
 
     this.back({
-      beforeNavigate: () => this.messageService.add({severity: "info", summary: "Até breve..."}),
+      beforeNavigate: () => this.messageService.add({severity: "info", summary: message}),
       timeout: 1000
     })
   }
