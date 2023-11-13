@@ -50,8 +50,8 @@ export class InvoiceComponent extends FormBaseComponent implements OnInit {
         next: (data) => {
           this.form.patchValue({
             description: data.description,
-            value: data.value,
-            date: data.date,
+            value: data.amount,
+            date: data.expirationDate,
             status: data.status,
           });
         },

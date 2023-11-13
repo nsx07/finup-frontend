@@ -1,6 +1,6 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-48 mt-10">
-  <h1 class="text-4xl font-bold">Faturas</h1>
-  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+  <h1 class="text-4xl font-bold text-white mb-2">Faturas</h1>
+  <table class="w-full text-sm text-left text-gray-light dark:text-gray-400">
     <thead
       class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
     >
@@ -20,17 +20,19 @@
         >
           {{ invoice.description }}
         </th>
-        <td class="px-6 py-4">{{ invoice.value }}</td>
-        <td class="px-6 py-4">{{ invoice.date }}</td>
+        <td class="px-6 py-4">{{ invoice.amount }}</td>
+        <td class="px-6 py-4">
+          {{ invoice.expirationDate | date : "dd/MM/yyyy" }}
+        </td>
         <td class="px-6 py-4">{{ invoice.status }}</td>
         <td class="px-6 py-4">
           <a
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3"
+            class="font-medium text-blue-light dark:text-blue-light hover:underline mr-3"
             (click)="onEdit(invoice.id)"
             >Edit</a
           >
           <a
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            class="font-medium text-blue-light dark:text-blue-light hover:underline"
             (click)="onDelete(invoice)"
             >Delete</a
           >

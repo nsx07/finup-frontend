@@ -25,7 +25,7 @@ export class InvoiceTableComponent {
   }
 
   onEdit(selectGoal: any): void {
-    this.router.navigate(["invoice", selectGoal]);
+    this.router.navigate(["/addInvoice", selectGoal]);
   }
 
   onDelete(selectedGoal: any): void {
