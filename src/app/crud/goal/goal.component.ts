@@ -47,7 +47,7 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
 
   private loadGoalDetails() {
     this.apiService
-      .requestFromApi(`api/goal/getById/${this.goalId}`)
+      .requestFromApi(`goal/getById/${this.goalId}`)
       .subscribe({
         next: (data) => {
           this.form.patchValue({
@@ -70,7 +70,7 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
 
     if (this.isEditing) {
       this.apiService
-        .updateApi("api/goal/update", { ...form, id: this.goalId })
+        .updateApi("goal/update", { ...form, id: this.goalId })
         .subscribe({
           next: (data) => {
             console.log(data);
@@ -83,7 +83,7 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
           },
         });
     } else {
-      this.apiService.sendToApi("api/goal/save", form).subscribe({
+      this.apiService.sendToApi("goal/save", form).subscribe({
         next: (data) => {
           console.log(data);
           if (data) {

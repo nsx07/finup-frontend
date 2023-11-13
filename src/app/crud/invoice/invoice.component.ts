@@ -45,7 +45,7 @@ export class InvoiceComponent extends FormBaseComponent implements OnInit {
 
   private loadGoalDetails() {
     this.apiService
-      .requestFromApi(`api/bill/getById/${this.invoiceId}`)
+      .requestFromApi(`bill/getById/${this.invoiceId}`)
       .subscribe({
         next: (data) => {
           this.form.patchValue({
