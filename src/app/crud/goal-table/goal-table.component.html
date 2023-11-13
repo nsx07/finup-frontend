@@ -1,9 +1,7 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-48 mt-10">
-  <h1 class="text-4xl font-bold">Meta</h1>
-  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-    <thead
-      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-    >
+  <h1 class="text-4xl font-bold text-white">Metas</h1>
+  <table class="w-full text-sm text-left text-gray-light dark:text-gray-400">
+    <thead class="text-xs text-white uppercase bg-gray-dark bg-opacity-40">
       <tr>
         <th scope="col" class="px-6 py-3">Nome</th>
         <th scope="col" class="px-6 py-3">Valor</th>
@@ -16,7 +14,7 @@
     </thead>
     <tbody>
       <tr
-        class="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+        class="bg-gray-light bg-opacity-20 border-b border-gray-light"
         *ngFor="let goal of goals"
       >
         <th
@@ -32,12 +30,12 @@
         <td class="px-6 py-4">{{ goal.description }}</td>
         <td class="px-6 py-4">
           <a
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-3"
+            class="font-medium text-blue-light dark:text-blue-light hover:underline mr-3 cursor-pointer"
             (click)="onEdit(goal.id)"
             >Edit</a
           >
           <a
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            class="font-medium text-blue-light dark:text-blue-light hover:underline cursor-pointer"
             (click)="onDelete(goal)"
             >Delete</a
           >

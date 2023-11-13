@@ -1,36 +1,39 @@
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 p-2">
-  <div class="bg-white p-4 rounded-md overflow-x-auto">
-    <h2 class="text-gray-500 text-lg font-semibold pb-4">Faturas</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 mx-2">
+  <div class="bg-gray-dark bg-opacity-60 p-4 rounded-md overflow-x-auto">
+    <h2 class="text-white text-lg font-semibold pb-4">Faturas</h2>
     <div class="bg-gradient-to-r from-cyan-300 to-blue-light h-px mb-6"></div>
     <table class="w-full table-auto text-sm">
       <thead class="text-left">
         <tr class="text-sm leading-normal">
           <th
-            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-gray-light"
           >
             Valor
           </th>
           <th
-            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-gray-light"
           >
             Data
           </th>
           <th
-            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-gray-light"
           >
             Status
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let invoice of invoices" class="hover:bg-grey-lighter">
-          <td class="py-2 px-4 border-b border-grey-light">
+        <tr
+          *ngFor="let invoice of invoices"
+          class="hover:bg-grey-lighter text-white"
+        >
+          <td class="py-2 px-4 border-b border-gray-light">
             {{ invoice.amount }}
           </td>
-          <td class="py-2 px-4 border-b border-grey-light">
+          <td class="py-2 px-4 border-b border-gray-light">
             {{ invoice.expirationDate | date : "dd/MM/yyyy" }}
           </td>
-          <td class="py-2 px-4 border-b border-grey-light">
+          <td class="py-2 px-4 border-b border-gray-light">
             {{ invoice.status }}
           </td>
         </tr>
@@ -48,34 +51,34 @@
     </div>
   </div>
 
-  <div class="bg-white p-4 rounded-md overflow-x-auto">
-    <h2 class="text-gray-500 text-lg font-semibold pb-4">Metas</h2>
+  <div class="bg-gray-dark bg-opacity-60 p-4 rounded-md overflow-x-auto">
+    <h2 class="text-white text-lg font-semibold pb-4">Metas</h2>
     <div class="bg-gradient-to-r from-cyan-300 to-blue-light h-px mb-6"></div>
     <table class="w-full table-auto text-sm">
       <thead class="text-left">
         <tr class="text-sm leading-normal">
           <th
-            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-gray-light"
           >
             Nome
           </th>
           <th
-            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-gray-light"
           >
             Valor
           </th>
           <th
-            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+            class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-white border-b border-gray-light"
           >
             Status
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr class="hover:bg-grey-lighter">
-          <td class="py-2 px-4 border-b border-grey-light">Celular</td>
-          <td class="py-2 px-4 border-b border-grey-light">R$2.500,00</td>
-          <td class="py-2 px-4 border-b border-grey-light">Em andamento</td>
+        <tr class="hover:bg-grey-lighter text-white">
+          <td class="py-2 px-4 border-b border-gray-light">Celular</td>
+          <td class="py-2 px-4 border-b border-gray-light">R$2.500,00</td>
+          <td class="py-2 px-4 border-b border-gray-light">Em andamento</td>
         </tr>
       </tbody>
     </table>
