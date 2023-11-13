@@ -4,13 +4,17 @@ import { UserService } from "../../services/userService.service";
 import Swal from "sweetalert2";
 import { FormBaseComponent } from "../../shared/form-base.component";
 import { IFormCanDeactivate } from "../../guards/iform-candeactivate";
+import { FormValidators } from "../../shared/form-validators";
 
 @Component({
   selector: "app-signup",
   templateUrl: "./signup.component.html",
   styleUrls: ["./signup.component.scss"],
 })
-export class SignupComponent extends FormBaseComponent implements IFormCanDeactivate {
+export class SignupComponent
+  extends FormBaseComponent
+  implements IFormCanDeactivate
+{
   private formChanges: boolean = false;
   private formSubmitted = false;
 
@@ -24,13 +28,8 @@ export class SignupComponent extends FormBaseComponent implements IFormCanDeacti
       dateBirth: [null, [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
       password: [null, [Validators.required]],
-      confirmPassword: [null],
+      confirmPassword: [null, [FormValidators.equalsTo("password")]],
     });
-
-    this.form.get("confirmPassword")?.setValidators([
-      Validators.required,
-      //FormValidators.equalsTo("password"),
-    ]);
 
     this.form.valueChanges.subscribe(() => (this.formChanges = true));
   }
