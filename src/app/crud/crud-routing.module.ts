@@ -23,11 +23,11 @@ const routes: Routes = [
       { path: "goalTable", component: GoalTableComponent },
       { path: "userTable", component: UserTableComponent },
       {
-        path: "invoice",
+        path: "addInvoice",
         component: InvoiceComponent,
       },
       {
-        path: "invoice/:id",
+        path: "addInvoice/:id",
         component: InvoiceComponent,
       },
       {
