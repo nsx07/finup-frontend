@@ -12,7 +12,5 @@ export class UserService {
   createUser(user: any) {
     return this.http.post(`${this.apiUrl}/api/user/save`, user);
   }
-  logUser(user: any) {
-    return this.http.get(`${this.apiUrl}/api/user/login`, user);
-  }
+ 
 }
