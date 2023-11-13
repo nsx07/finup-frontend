@@ -28,7 +28,6 @@ import { AuthService } from "./services/auth-service.service";
 
       <loader></loader>
       <p-toast></p-toast>
-      <app-header *ngIf="showHeader"></app-header>
 
       <div class="relative">
         <router-outlet></router-outlet>

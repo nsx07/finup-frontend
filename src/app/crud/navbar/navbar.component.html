@@ -1,0 +1,76 @@
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<div class="flex flex-col h-screen bg-gray-light">
+  <div
+    class="bg-gray-dark text-white shadow w-full p-2 flex items-center justify-between"
+  >
+    <div class="flex items-center ml-3">
+      <div class="hidden md:flex items-center">
+        <img
+          src="../../../assets/logo/fine-up-logo.png"
+          alt="Logo"
+          class="w-28 h-18 mr-2"
+        />
+      </div>
+      <div class="md:hidden flex items-center">
+        <button (click)="toggleMenu()">
+          <i class="fas fa-bars text-white text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="space-x-5 mr-3">
+      <button>
+        <i class="fas fa-user text-white text-lg"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="flex-1 flex">
+    <div
+      class="p-2 bg-gray-dark bg-opacity-80 w-60 flex flex-col md:flex"
+      [ngClass]="{ hidden: !isOpen }"
+    >
+      <nav>
+        <a
+          class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white"
+          href="#"
+        >
+          <i class="fas fa-home mr-2"></i>Inicio
+        </a>
+        <a
+          class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white"
+          routerLink="['goal']"
+        >
+          <i class="fas fa-file-alt mr-2"></i>Nova fatura
+        </a>
+        <a
+          class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white"
+          href="#"
+        >
+          <i class="fas fa-store mr-2"></i>Nova meta
+        </a>
+      </nav>
+
+      <a
+        class="block text-white py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white mt-auto"
+        href="#"
+      >
+        <i class="fas fa-sign-out-alt mr-2"></i>Sair da conta
+      </a>
+
+      <div class="bg-gradient-to-r from-cyan-300 to-blue-light h-px mt-2"></div>
+
+      <p class="mb-1 px-5 py-3 text-left text-xs text-blue-light">
+        Copyright © FinUp - 2023
+      </p>
+    </div>
+
+    <div class="flex-1 p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

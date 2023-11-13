@@ -24,7 +24,7 @@ import { AutoCompleteModule } from "primeng/autocomplete";
 import { SplitButtonModule } from "primeng/splitbutton";
 import { MessageModule } from "primeng/message";
 import { ToastModule } from "primeng/toast";
-import { CardModule } from 'primeng/card';
+import { CardModule } from "primeng/card";
 /** */
 
 import { ApiService } from "./services/api-service.service";
@@ -38,7 +38,6 @@ import { HomeComponent } from "./pages/home/home.component";
 import { AuthGuard } from "./guards/auth-guard.guard";
 import { AuthService } from "./services/auth-service.service";
 import { JwtModule } from "@auth0/angular-jwt";
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +46,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     LoginComponent,
     SignupComponent,
     InvoiceTableComponent,
-    DashboardComponent,
   ],
   imports: [
     FormsModule,

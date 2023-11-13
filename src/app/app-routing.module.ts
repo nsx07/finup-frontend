@@ -9,12 +9,17 @@ import { HomeComponent } from "./pages/home/home.component";
 import { InvoiceComponent } from "./crud/invoice/invoice.component";
 import { InvoiceTableComponent } from "./crud/invoice-table/invoice-table.component";
 import { AuthGuard } from "./guards/auth-guard.guard";
-import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 
 const routes: Routes = [
+  { path: "", redirectTo: "home", pathMatch: "full" },
+  {
+    path: "signup",
+    component: SignupComponent,
+    canDeactivate: [FormDeactivateGuard],
+  },
   { path: "login", component: LoginComponent },
   { path: "home", component: HomeComponent },
-  { path: "dashboard", component: DashboardComponent },
+  { path: "invoice", component: InvoiceTableComponent },
   {
     path: "crud",
     loadChildren: () => import("./crud/crud.module").then((x) => x.CrudModule),
