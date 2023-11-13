@@ -1,11 +1,8 @@
-<div class="flex justify-center align-middle h-full bg-gray-dark text-white">
-  <div
-    class="py-10 px-4 sm:px-8 md:px-12 lg:px-28 w-full sm:w-3/4 md:w-2/2 xl:w-2/3"
-  >
-    <main class="flex flex-col gap-10 w-full mt-10 sm:mt-28">
+<div class="flex justify-center items-center h-full text-white">
+  <div class="w-full sm:w-3/4 md:w-2/2 xl:w-2/3">
+    <main class="flex flex-col gap-10 w-full px-4">
       <header class="flex flex-col gap-4 w-full max-w-[350px]:">
-        <h1 class="text-4xl font-bold">Usuários</h1>
-        <i class="fa-solid fa-user ml-2"></i>
+        <h1 class="text-4xl font-bold">Minha conta</h1>
       </header>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="flex flex-wrap -mx-3 mb-6">
@@ -14,7 +11,7 @@
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
               for="name"
             >
-              Nome
+              Nome completo
             </label>
             <input
               [ngClass]="{
@@ -25,6 +22,7 @@
               id="name"
               type="text"
               formControlName="name"
+              [disabled]="true"
             />
           </div>
 
@@ -45,70 +43,23 @@
               type="email"
               formControlName="email"
               placeholder="dev@test.com"
+              [disabled]="true"
             />
           </div>
         </div>
 
         <div class="flex flex-wrap -mx-0 mb-5">
-          <label for="dateBirth">Aniversário</label>
+          <label for="dateBirth">Data de nascimento</label>
           <input
             type="date"
             id="dateBirth"
             formControlName="dateBirth"
             placeholder="Aniversário"
-            max="{{ today }}"
             [style]="{ width: '100%' }"
+            [disabled]="true"
             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           />
         </div>
-
-        <div class="flex flex-wrap -mx-3 mb-6">
-          <div class="w-full md:w-1/2 px-3 md:mb-0">
-            <label
-              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              for="password"
-            >
-              Senha
-            </label>
-            <input
-              [ngClass]="{
-                'border-red-500':
-                  form.get('password')?.invalid && form.get('password')?.touched
-              }"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border-gray-200 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="password"
-              type="password"
-              formControlName="password"
-            />
-          </div>
-
-          <div class="w-full md:w-1/2 px-3">
-            <label
-              class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              for="confirm"
-            >
-              Confirmar Senha
-            </label>
-            <input
-              [ngClass]="{
-                'border-red-500':
-                  form.get('confirm')?.invalid && form.get('confirm')?.touched
-              }"
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="confirm"
-              type="text"
-              formControlName="confirm"
-            />
-          </div>
-        </div>
-
-        <button
-          class="bg-blue-light hover:bg-white hover:text-gray-dark text-white font-bold py-2 px-4 rounded w-full"
-          type="submit"
-          (click)="submit()"
-        >
-          Adicionar usuário
-        </button>
       </form>
     </main>
   </div>
