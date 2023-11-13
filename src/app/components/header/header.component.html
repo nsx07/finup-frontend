@@ -1,15 +1,21 @@
 <div class="flex flex-wrap h-full">
   <section class="relative mx-auto">
-    <nav class="flex bg-gray-light text-white w-screen">
-      <div class="px-5 xl:px-12 py-6 flex w-full items-center justify-between">
-        <a class="text-3xl font-bold font-heading" href="#">
+    <nav
+      class="flex bg-gray-dark bg-opacity-60 text-white w-screen border-b border-gray-light"
+    >
+      <div
+        class="px-5 xl:px-12 py-6 flex w-full items-center justify-between flex-wrap"
+      >
+        <a class="text-3xl font-bold font-heading" [routerLink]="['/home']">
           <img
             class="h-9"
             src="../../../assets/logo/fine-up-favicon.png"
             alt=""
           />
         </a>
-        <ul class="flex font-semibold font-heading space-x-2">
+        <ul
+          class="flex font-semibold font-heading space-x-2 h-12 md:h-8 items-center"
+        >
           <li>
             <a
               class="py-2 px-6 rounded-lg border-blue-light border-2"
