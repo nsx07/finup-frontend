@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { NavigationEnd, Router } from "@angular/router";
 import * as moment from "moment";
 import { PrimeNGConfig } from "primeng/api";
+import { AuthService } from "./services/auth-service.service";
 
 @Component({
   selector: "app-root",
@@ -46,11 +47,22 @@ import { PrimeNGConfig } from "primeng/api";
   styles: [],
 })
 export class AppComponent {
-  constructor(private primeNG: PrimeNGConfig, private router: Router) {
+  constructor(private primeNG: PrimeNGConfig, private router: Router, private auth: AuthService) {
     moment.locale("pt-br");
     primeNG.overlayOptions = {
       appendTo: "body",
     };
+
+    router.events.subscribe((event) => {
+
+      if (event instanceof NavigationEnd) {
+        if (auth.isLogged && (this.isLogin || this.isSignup)) {
+          this.router.navigate(["/"]);
+        }
+      }
+
+    })
+
   }
 
   private get isLogin() {

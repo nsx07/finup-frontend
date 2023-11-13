@@ -37,27 +37,27 @@
       <nav>
         <a
           class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white"
-          href="#"
+          routerLink="dashboard"
         >
-          <i class="fas fa-home mr-2"></i>Inicio
+          <i class="fas fa-home mr-2 w-5"></i>Inicio
         </a>
         <a
           class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white"
-          routerLink="['goal']"
+          routerLink="goal"
         >
-          <i class="fas fa-file-alt mr-2"></i>Nova fatura
+          <i class="fas fa-piggy-bank mr-2 w-5"></i>Nova meta
         </a>
         <a
           class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white"
-          href="#"
+          routerLink="addInvoice"
         >
-          <i class="fas fa-store mr-2"></i>Nova meta
+          <i class="fas fa-dollar mr-2 w-5"></i>Nova fatura
         </a>
       </nav>
 
       <a
-        class="block text-white py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white mt-auto"
-        href="#"
+        class="block cursor-pointer text-white py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white mt-auto"
+        (click)="logout()"
       >
         <i class="fas fa-sign-out-alt mr-2"></i>Sair da conta
       </a>

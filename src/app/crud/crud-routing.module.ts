@@ -8,6 +8,7 @@ import { GoalTableComponent } from "./goal-table/goal-table.component";
 import { UserTableComponent } from "./user-table/user-table.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { NavbarComponent } from "./navbar/navbar.component";
+import { InvoiceTableComponent } from "./invoice-table/invoice-table.component";
 
 const routes: Routes = [
   {
@@ -26,8 +27,12 @@ const routes: Routes = [
         component: InvoiceComponent,
       },
       {
-        path: "invoice/:id",
+        path: "addInvoice/:id",
         component: InvoiceComponent,
+      },
+      {
+        path: "invoiceTable",
+        component: InvoiceTableComponent,
       },
     ],
   },
