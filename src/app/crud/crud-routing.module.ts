@@ -27,13 +27,13 @@ const routes: Routes = [
         component: InvoiceComponent,
       },
       {
+        path: "invoice/:id",
+        component: InvoiceComponent,
+      },
+      {
         path: "invoiceTable",
         component: InvoiceTableComponent,
       },
-      {
-        path: "invoiceTable/:id",
-        component: InvoiceTableComponent,
-      }
     ],
   },
 ];
