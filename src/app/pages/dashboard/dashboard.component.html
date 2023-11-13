@@ -1,47 +1,164 @@
-<div class="flex flex-wrap justify-center  align-middle h-full bg-gray-dark text-white">
-    <div class="m-8">
-        <p-card [style]="{ width: '360px' }">
-            <ng-template pTemplate="header">
-                <img alt="Card" src="../../../assets/metasimgteste.png" />
-            </ng-template>
-            <p>
-                "Transforme sonhos em metas no nosso app! <br>
-                Adicione, conquiste, evolua: sua jornada de realizações começa aqui."
-            </p>
-            <ng-template pTemplate="footer">
-                <p-button label="Acessar" icon="pi pi-check" (click)="redirectToPage('goalTable')"></p-button>
-                <p-button label="Adicionar" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="redirectToPage('goal')"></p-button>
-            </ng-template>
-        </p-card>
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  rel="stylesheet"
+/>
+
+<div class="flex flex-col h-screen bg-gray-light">
+  <div
+    class="bg-gray-dark text-white shadow w-full p-2 flex items-center justify-between"
+  >
+    <div class="flex items-center ml-3">
+      <div class="hidden md:flex items-center">
+        <img
+          src="../../../assets/logo/fine-up-logo.png"
+          alt="Logo"
+          class="w-28 h-18 mr-2"
+        />
+      </div>
+      <div class="md:hidden flex items-center">
+        <button (click)="toggleMenu()">
+          <i class="fas fa-bars text-white text-lg"></i>
+        </button>
+      </div>
     </div>
-    <div class="m-8">
-        <p-card [style]="{ width: '360px' }">
-            <ng-template pTemplate="header">
-                <img alt="Card" src="../../../assets/faturasimg.png" />
-            </ng-template>
-            <p>
-                "Organize suas finanças, alcance suas metas! Gerencie suas faturas com facilidade no nosso app, porque suas conquistas merecem uma gestão financeira inteligente."
-            </p>
-            <ng-template pTemplate="footer">
-                <p-button label="Acessar" icon="pi pi-check" (click)="redirectToPage('invoice')"></p-button>
-                <p-button label="Adicionar" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="redirectToPage('addInvoice')"></p-button>
-            </ng-template>
-        </p-card>
+
+    <div class="space-x-5 mr-3">
+      <button>
+        <i class="fas fa-user text-white text-lg"></i>
+      </button>
     </div>
-    
-    <div class="m-8">
-        <p-card [style]="{ width: '360px' }">
-            <ng-template pTemplate="header">
-                <img alt="Card" src="../../../assets/usuarios.png" />
-            </ng-template>
-            <p>
-                "Conecte, Controle, Conquiste! Gerencie seus usuários de forma eficiente no nosso app - a chave para uma experiência personalizada e uma comunidade vibrante."
-            </p>
-            <ng-template pTemplate="footer">
-                <p-button label="Acessar" icon="pi pi-check" (click)="redirectToPage('userTable')"></p-button>
-                <p-button label="Adicionar" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="redirectToPage('user')"></p-button>
-            </ng-template>
-        </p-card>
-    
+  </div>
+
+  <div class="flex-1 flex">
+    <div
+      class="p-2 bg-gray-dark bg-opacity-80 w-60 flex flex-col md:flex"
+      [ngClass]="{ hidden: !isOpen }"
+    >
+      <nav>
+        <a
+          class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white"
+          href="#"
+        >
+          <i class="fas fa-home mr-2"></i>Inicio
+        </a>
+        <a
+          class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white"
+          href="#"
+        >
+          <i class="fas fa-file-alt mr-2"></i>Nova fatura
+        </a>
+        <a
+          class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white"
+          href="#"
+        >
+          <i class="fas fa-store mr-2"></i>Nova meta
+        </a>
+      </nav>
+
+      <a
+        class="block text-white py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r hover:from-cyan-400 hover:to-blue-light hover:text-white mt-auto"
+        href="#"
+      >
+        <i class="fas fa-sign-out-alt mr-2"></i>Sair da conta
+      </a>
+
+      <div class="bg-gradient-to-r from-cyan-300 to-blue-light h-px mt-2"></div>
+
+      <p class="mb-1 px-5 py-3 text-left text-xs text-blue-light">
+        Copyright © FinUp - 2023
+      </p>
     </div>
+
+    <div class="flex-1 p-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 p-2">
+        <div class="bg-white p-4 rounded-md overflow-x-auto">
+          <h2 class="text-gray-500 text-lg font-semibold pb-4">Faturas</h2>
+          <div
+            class="bg-gradient-to-r from-cyan-300 to-blue-light h-px mb-6"
+          ></div>
+          <table class="w-full table-auto text-sm">
+            <thead class="text-left">
+              <tr class="text-sm leading-normal">
+                <th
+                  class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+                >
+                  Valor
+                </th>
+                <th
+                  class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+                >
+                  Data
+                </th>
+                <th
+                  class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+                >
+                  Status
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hover:bg-grey-lighter">
+                <td class="py-2 px-4 border-b border-grey-light">R$100,00</td>
+                <td class="py-2 px-4 border-b border-grey-light">13/11/2023</td>
+                <td class="py-2 px-4 border-b border-grey-light">Pago</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="text-right mt-4">
+            <button
+              class="bg-blue-light text-white font-semibold py-2 px-4 rounded"
+            >
+              Ver mais
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-md overflow-x-auto">
+          <h2 class="text-gray-500 text-lg font-semibold pb-4">Metas</h2>
+          <div
+            class="bg-gradient-to-r from-cyan-300 to-blue-light h-px mb-6"
+          ></div>
+          <table class="w-full table-auto text-sm">
+            <thead class="text-left">
+              <tr class="text-sm leading-normal">
+                <th
+                  class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+                >
+                  Nome
+                </th>
+                <th
+                  class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+                >
+                  Valor
+                </th>
+                <th
+                  class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light"
+                >
+                  Status
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hover:bg-grey-lighter">
+                <td class="py-2 px-4 border-b border-grey-light">Celular</td>
+                <td class="py-2 px-4 border-b border-grey-light">R$2.500,00</td>
+                <td class="py-2 px-4 border-b border-grey-light">
+                  Em andamento
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="text-right mt-4">
+            <button
+              class="bg-blue-light text-white font-semibold py-2 px-4 rounded"
+            >
+              Ver mais
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

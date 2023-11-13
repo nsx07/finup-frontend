@@ -12,6 +12,7 @@ import { InvoiceTableComponent } from "./crud/invoice-table/invoice-table.compon
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 
 const routes: Routes = [
+  { path: "", redirectTo: "dashboard", pathMatch: "full" },
   {
     path: "signup",
     component: SignupComponent,

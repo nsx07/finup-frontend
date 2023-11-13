@@ -27,7 +27,6 @@ import { PrimeNGConfig } from "primeng/api";
 
       <loader></loader>
       <p-toast></p-toast>
-      <app-header *ngIf="showHeader"></app-header>
 
       <div class="relative">
         <router-outlet></router-outlet>

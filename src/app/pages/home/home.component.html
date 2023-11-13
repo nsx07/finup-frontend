@@ -1,20 +1,47 @@
-<div class="w-100 flex flex-col ali">
-    <img class="self-center" src="../assets/logo/fine-up-logo.png" alt="" />
-    <div class="self-center flex w-4/12 gap-2 mt-2">
-      <a
-        [routerLink]="['/login']"
-        class="outline-blue-light bg-blue-light hover:bg-white hover:text-gray-dark text-white font-bold py-2 px-4 rounded w-full text-center"
-        type="submit"
-      >
-        Entrar na conta
-      </a>
-
-      <a
-        [routerLink]="['/signup']"
-        class="bg-blue-light hover:bg-white hover:text-gray-dark text-white font-bold py-2 px-4 rounded w-full text-center"
-        type="submit"
-      >
-        Criar usuário
-      </a>
-    </div>
+<div class="flex flex-wrap justify-center  align-middle h-full bg-gray-dark text-white">
+  <div class="m-8">
+      <p-card [style]="{ width: '360px' }">
+          <ng-template pTemplate="header">
+              <img alt="Card" src="../../../assets/metasimgteste.png" />
+          </ng-template>
+          <p>
+              "Transforme sonhos em metas no nosso app! <br>
+              Adicione, conquiste, evolua: sua jornada de realizações começa aqui."
+          </p>
+          <ng-template pTemplate="footer">
+              <p-button label="Acessar" icon="pi pi-check" (click)="redirectToPage('goalTable')"></p-button>
+              <p-button label="Adicionar" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="redirectToPage('goal')"></p-button>
+          </ng-template>
+      </p-card>
   </div>
+  <div class="m-8">
+      <p-card [style]="{ width: '360px' }">
+          <ng-template pTemplate="header">
+              <img alt="Card" src="../../../assets/faturasimg.png" />
+          </ng-template>
+          <p>
+              "Organize suas finanças, alcance suas metas! Gerencie suas faturas com facilidade no nosso app, porque suas conquistas merecem uma gestão financeira inteligente."
+          </p>
+          <ng-template pTemplate="footer">
+              <p-button label="Acessar" icon="pi pi-check" (click)="redirectToPage('invoice')"></p-button>
+              <p-button label="Adicionar" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="redirectToPage('addInvoice')"></p-button>
+          </ng-template>
+      </p-card>
+  </div>
+  
+  <div class="m-8">
+      <p-card [style]="{ width: '360px' }">
+          <ng-template pTemplate="header">
+              <img alt="Card" src="../../../assets/usuarios.png" />
+          </ng-template>
+          <p>
+              "Conecte, Controle, Conquiste! Gerencie seus usuários de forma eficiente no nosso app - a chave para uma experiência personalizada e uma comunidade vibrante."
+          </p>
+          <ng-template pTemplate="footer">
+              <p-button label="Acessar" icon="pi pi-check" (click)="redirectToPage('userTable')"></p-button>
+              <p-button label="Adicionar" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="redirectToPage('user')"></p-button>
+          </ng-template>
+      </p-card>
+  
+  </div>
+</div>
