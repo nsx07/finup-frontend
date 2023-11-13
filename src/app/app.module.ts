@@ -24,6 +24,7 @@ import { AutoCompleteModule } from "primeng/autocomplete";
 import { SplitButtonModule } from "primeng/splitbutton";
 import { MessageModule } from "primeng/message";
 import { ToastModule } from "primeng/toast";
+import { CardModule } from 'primeng/card';
 /** */
 
 import { ApiService } from "./services/api-service.service";
@@ -32,11 +33,12 @@ import { LoginComponent } from "./pages/login/login.component";
 import { SignupComponent } from "./pages/signup/signup.component";
 import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
 import { CrudModule } from "./crud/crud.module";
-import { InvoiceTableComponent } from "./pages/invoice-table/invoice-table.component";
+import { InvoiceTableComponent } from "./crud/invoice-table/invoice-table.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { AuthGuard } from "./guards/auth-guard.guard";
 import { AuthService } from "./services/auth-service.service";
 import { JwtModule } from "@auth0/angular-jwt";
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -45,8 +47,8 @@ import { JwtModule } from "@auth0/angular-jwt";
     LoginComponent,
     SignupComponent,
     InvoiceTableComponent,
+    DashboardComponent,
   ],
-  schemas: [NO_ERRORS_SCHEMA],
   imports: [
     FormsModule,
     BrowserModule,
@@ -67,6 +69,7 @@ import { JwtModule } from "@auth0/angular-jwt";
     AutoCompleteModule,
     OverlayPanelModule,
     InputTextareaModule,
+    CardModule,
 
     CrudModule,
     FullCalendarModule,

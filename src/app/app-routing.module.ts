@@ -6,13 +6,20 @@ import { SignupComponent } from "./pages/signup/signup.component";
 import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
 import { LoginComponent } from "./pages/login/login.component";
 import { HomeComponent } from "./pages/home/home.component";
+import { InvoiceComponent } from "./crud/invoice/invoice.component";
+import { InvoiceTableComponent } from "./crud/invoice-table/invoice-table.component";
 import { AuthGuard } from "./guards/auth-guard.guard";
+import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "home", component: HomeComponent },
-  { path: "signup", component: SignupComponent, canDeactivate: [FormDeactivateGuard]},
-  { path: "crud", loadChildren: () => import("./crud/crud.module").then(x => x.CrudModule), canActivateChild: [AuthGuard], },
+  { path: "dashboard", component: DashboardComponent },
+  {
+    path: "crud",
+    loadChildren: () => import("./crud/crud.module").then((x) => x.CrudModule),
+    canActivateChild: [AuthGuard],
+  },
 ];
 
 @NgModule({

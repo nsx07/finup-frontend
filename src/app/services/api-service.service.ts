@@ -1,20 +1,24 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 import { Observable, Subject, finalize, map, of, take } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { LoaderService } from './loader.service';
 import { LocalStorageService } from './local-storage.service';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: "root" })
 export class ApiService {
 
   private baseUrl = environment.apiUrl + "api/";
   private offline = new Subject();
 
-  constructor(private httpClient: HttpClient, private loader: LoaderService, private localStorage: LocalStorageService) {
+  constructor(
+    private httpClient: HttpClient,
+    private loader: LoaderService,
+    private localStorage: LocalStorageService
+  ) {
     setInterval(() => {
-      this.isConnect
+      this.isConnect;
     }, 333);
   }
 
@@ -24,18 +28,18 @@ export class ApiService {
     if (!this.connected && navigator.onLine) {
       this.offline.next(false);
     }
-    
+
     if (this.connected && !navigator.onLine) {
       this.offline.next(true);
-    } 
-    
-    this.connected = navigator.onLine
+    }
+
+    this.connected = navigator.onLine;
     return this.connected;
   }
 
   public requestFromApi<T = any>(endpoint: string, query?: string) {
     let apiUrl = this.baseUrl + `${endpoint}`;
-    this.loader.show()
+    this.loader.show();
 
     if (query) {
       apiUrl += query;
@@ -61,7 +65,7 @@ export class ApiService {
 
   public deleteFromApi(endpoint: string, query?: any) {
     let apiUrl = this.baseUrl + `${endpoint}`;
-    this.loader.show()
+    this.loader.show();
 
     if (query) {
       apiUrl += query;
@@ -72,5 +76,4 @@ export class ApiService {
       return result;
     }));
   }
-  
 }

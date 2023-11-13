@@ -1,14 +1,14 @@
 import { Component } from "@angular/core";
 import { ApiService } from "../../services/api-service.service";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-goal-table",
-  templateUrl: "./goal-table.component.html",
-  styleUrls: ["./goal-table.component.scss"],
+  selector: "app-invoice-table",
+  templateUrl: "./invoice-table.component.html",
+  styleUrls: ["./invoice-table.component.scss"],
 })
-export class GoalTableComponent {
-  goals: any[] = [];
+export class InvoiceTableComponent {
+  invoices: any[] = [];
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -17,21 +17,21 @@ export class GoalTableComponent {
   }
 
   fetchGoals(): void {
-    this.apiService.requestFromApi("goal/getAll").subscribe({
+    this.apiService.requestFromApi("bill/getAll").subscribe({
       next: (data) => {
-        this.goals = data;
+        this.invoices = data;
       },
     });
   }
 
   onEdit(selectGoal: any): void {
-    this.router.navigate(["goal", selectGoal]);
+    this.router.navigate(["invoice", selectGoal]);
   }
 
   onDelete(selectedGoal: any): void {
     if (confirm("Are you sure you want to delete this goal?")) {
       this.apiService
-        .deleteFromApi("goal/delete/" + selectedGoal.id)
+        .deleteFromApi("bill/delete/" + selectedGoal.id)
         .subscribe({
           next: () => {
             console.log("Goal deleted successfully");

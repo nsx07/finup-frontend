@@ -1,9 +1,9 @@
-<div class="grid grid-cols-2 bg-gray-dark text-white">
+<div class="grid grid-cols-1 sm:grid-cols-2 bg-gray-dark text-white">
   <div>
-    <div class="py-10 px-28">
+    <div class="py-10 px-4 sm:px-8 md:px-12 lg:px-28">
       <img src="../../../assets/logo/fine-up-logo.png" class="w-40" />
-      <main class="flex flex-col gap-10 w-full mt-28">
-        <header class="flex flex-col gap-4 w-full max-w-[350px]:">
+      <main class="flex flex-col gap-10 w-full mt-10 sm:mt-28">
+        <header class="flex flex-col gap-4 w-full max-w-[350px]">
           <h1 class="text-4xl font-bold">Acesse a plataforma</h1>
           <p class="font-normal text-base">
             Faça login ou crie sua conta agora mesmo.
@@ -11,52 +11,47 @@
         </header>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/2 px-3 md:mb-0">
+            <div class="w-full sm:w-1/2 px-3 mb-6 sm:mb-0">
               <label
                 class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
                 for="name"
               >
-                Nome
+                Nome Completo
               </label>
               <input
                 [ngClass]="{
                   'border-red-500':
-                    form.get('firstName')?.invalid &&
-                    form.get('firstName')?.touched
+                    form.get('name')?.invalid && form.get('name')?.touched
                 }"
                 class="appearance-none block w-full bg-gray-200 text-gray-700 border-gray-200 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="name"
                 type="text"
-                formControlName="firstName"
+                formControlName="name"
               />
               <app-error-msg
-                [control]="form.get('firstName')"
-                label="firstName"
+                [control]="form.get('name')"
+                label="name"
               ></app-error-msg>
             </div>
 
             <div class="w-full md:w-1/2 px-3">
               <label
                 class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-                for="lastName"
+                for="dateBirth"
               >
-                Sobrenome
+                Data início
               </label>
               <input
                 [ngClass]="{
                   'border-red-500':
-                    form.get('lastName')?.invalid &&
-                    form.get('lastName')?.touched
+                    form.get('dateBirth')?.invalid &&
+                    form.get('dateBirth')?.touched
                 }"
                 class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="lastName"
-                type="text"
-                formControlName="lastName"
+                id="dateBirth"
+                type="date"
+                formControlName="dateBirth"
               />
-              <app-error-msg
-                [control]="form.get('lastName')"
-                label="lastName"
-              ></app-error-msg>
             </div>
           </div>
 
