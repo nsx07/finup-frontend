@@ -74,11 +74,11 @@
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr class="hover:bg-grey-lighter text-white">
-          <td class="py-2 px-4 border-b border-gray-light">Celular</td>
-          <td class="py-2 px-4 border-b border-gray-light">R$2.500,00</td>
-          <td class="py-2 px-4 border-b border-gray-light">Em andamento</td>
+      <tbody >
+        <tr *ngFor="let goal of goals" class="hover:bg-grey-lighter text-white">
+          <td class="py-2 px-4 border-b border-gray-light">{{goal.name}}</td>
+          <td class="py-2 px-4 border-b border-gray-light">{{goal.amount}}</td>
+          <td class="py-2 px-4 border-b border-gray-light">{{goal.status}}</td>
         </tr>
       </tbody>
     </table>

@@ -54,10 +54,11 @@ export class GoalComponent extends FormBaseComponent implements OnInit {
             name: data.name,
             amount: data.amount,
             status: data.status,
-            startDate: data.startDate,
-            finishDate: data.finishDate,
+            startDate: data.startDate.substring(0,10),
+            finishDate: data.finishDate.substring(0,10),
             description: data.description,
           });
+          console.log(data);
         },
         error: (error) => {
           console.error("Error loading goal details:", error);

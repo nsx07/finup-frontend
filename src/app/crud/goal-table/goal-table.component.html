@@ -24,8 +24,8 @@
           {{ goal.name }}
         </th>
         <td class="px-6 py-4">{{ goal.amount }}</td>
-        <td class="px-6 py-4">{{ goal.startDate }}</td>
-        <td class="px-6 py-4">{{ goal.finishDate }}</td>
+        <td class="px-6 py-4">{{ goal.startDate | date : "dd/MM/yyyy" }}</td>
+        <td class="px-6 py-4">{{ goal.finishDate | date : "dd/MM/yyyy" }}</td>
         <td class="px-6 py-4">{{ goal.status }}</td>
         <td class="px-6 py-4">{{ goal.description }}</td>
         <td class="px-6 py-4">

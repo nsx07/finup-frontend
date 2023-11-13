@@ -15,7 +15,7 @@ export class DashboardComponent {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    // this.fetchGoals();
+    this.fetchGoals();
     this.fetchBill();
   }
 
