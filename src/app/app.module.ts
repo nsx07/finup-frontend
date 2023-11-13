@@ -34,6 +34,9 @@ import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
 import { CrudModule } from "./crud/crud.module";
 import { InvoiceTableComponent } from "./pages/invoice-table/invoice-table.component";
 import { HomeComponent } from "./pages/home/home.component";
+import { AuthGuard } from "./guards/auth-guard.guard";
+import { AuthService } from "./services/auth-service.service";
+import { JwtModule } from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [
@@ -74,9 +77,17 @@ import { HomeComponent } from "./pages/home/home.component";
       registrationStrategy: "registerWhenStable:30000",
     }),
 
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: AuthService.tokenGetter,
+        allowedDomains: ["localhost:8080"],
+        disallowedRoutes: ["localhost:8080/auth"],
+      },
+    }),
+
     ComponentsModule,
   ],
-  providers: [HttpClient, ApiService, MessageService, FormDeactivateGuard],
+  providers: [HttpClient, ApiService, MessageService, FormDeactivateGuard, AuthGuard, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
