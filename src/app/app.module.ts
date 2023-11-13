@@ -24,7 +24,7 @@ import { AutoCompleteModule } from "primeng/autocomplete";
 import { SplitButtonModule } from "primeng/splitbutton";
 import { MessageModule } from "primeng/message";
 import { ToastModule } from "primeng/toast";
-import { CardModule } from 'primeng/card';
+import { CardModule } from "primeng/card";
 /** */
 
 import { ApiService } from "./services/api-service.service";
@@ -35,7 +35,7 @@ import { FormDeactivateGuard } from "./guards/form-deactivate.guard";
 import { CrudModule } from "./crud/crud.module";
 import { InvoiceTableComponent } from "./crud/invoice-table/invoice-table.component";
 import { HomeComponent } from "./pages/home/home.component";
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DashboardComponent } from "./crud/dashboard/dashboard.component";
 
 @NgModule({
   declarations: [
@@ -44,7 +44,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     LoginComponent,
     SignupComponent,
     InvoiceTableComponent,
-    DashboardComponent,
   ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [

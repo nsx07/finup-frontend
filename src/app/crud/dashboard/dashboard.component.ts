@@ -8,10 +8,4 @@ import { Router } from "@angular/router";
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"],
 })
-export class DashboardComponent {
-  isOpen = false;
-
-  toggleMenu() {
-    this.isOpen = !this.isOpen;
-  }
-}
+export class DashboardComponent {}
