@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { LocalStorageService } from '../services/local-storage.service';
 import { LoaderService } from '../services/loader.service';
 import { environment } from '../../environments/environment.development';
-import { Subject, map } from 'rxjs';
+import { Subject, map, finalize } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -47,11 +47,11 @@ export class AuthService {
 
     if (!token) {
       this.logged = false
+      this.localStorage.clear();
     } else {
       this.logged = true
+      this.localStorage.set("token", token);
     }
-
-    this.localStorage.set("token", token);
   }
 
   public get TokenData() {
@@ -66,6 +66,13 @@ export class AuthService {
       return this.jwt.getTokenExpirationDate()
     }
     return null
+  }
+
+  public static tokenGetter() {
+    let token = localStorage.getItem("token") as string;
+    token = !token && token != "undefined" ? (token)?.replaceAll("\"", "") : token;
+    
+    return token
   }
 
   public get IsValid() {
@@ -88,16 +95,15 @@ export class AuthService {
   
   public login(login: string, password: string) {
     const loginModel = {
-      login: login,
+      username: login,
       password: password
     }
 
     this.loader.show()
 
-    return this.httpClient.post(this.baseUrl + "Auth/Login", loginModel).pipe(map((r: any) => {
+    return this.httpClient.post(this.baseUrl + "auth/login", loginModel).pipe(finalize(() => this.loader.hide())).pipe(map((r: any) => {
       console.log(r);
       this.Token = r.token;
-      this.loader.hide();
 
       if (r.token) {
         this.checkToken();
@@ -107,11 +113,11 @@ export class AuthService {
     }))
   }
 
-  public logout() {
+  public logout(message =  "Até breve...") {
     this.Token = null;
 
     this.back({
-      beforeNavigate: () => this.messageService.add({severity: "info", summary: "Até breve..."}),
+      beforeNavigate: () => this.messageService.add({severity: "info", summary: message}),
       timeout: 1000
     })
   }

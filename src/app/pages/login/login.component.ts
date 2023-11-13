@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { FormBaseComponent } from "../../shared/form-base.component";
 import { UserService } from "../../services/userService.service";
 import Swal from "sweetalert2";
+import { AuthService } from "../../services/auth-service.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -11,14 +12,14 @@ import { Router } from "@angular/router";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent extends FormBaseComponent implements OnInit {
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     super();
   }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: [null, [Validators.email, Validators.required]],
-      password: [null, [Validators.required]],
+      username: ["", [Validators.email, Validators.required]],
+      password: ["", [Validators.required]],
     });
   }
 
@@ -29,51 +30,29 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
 
       // TODO: Adicione a lógica de validação do login
       // Verifique se o email e a senha são válidos
-      if (isValidLogin(valueSubmit.email, valueSubmit.password)) {
-        this.userService.logUser(valueSubmit).subscribe(
-          (response) => {
-            Swal.fire({
-              title: "Sucesso!",
-              text: "Login Realizado com sucesso!",
-              icon: "success",
-            }).then(() => {
-              this.router.navigate(["/user"]);
-            });
-          },
-          (error) => {
-            console.error("Erro ao logar na conta", error);
-            Swal.fire({
-              title: "Erro",
-              text: "Ocorreu um erro ao logar na conta.",
-              icon: "error",
-            });
-          }
-        );
-      } else {
-        Swal.fire({
-          title: "Erro",
-          text: "Credenciais inválidas. Verifique seu email e senha.",
-          icon: "error",
-        });
-      }
-    } else {
-      Swal.fire({
-        title: "Erro",
-        text: "Por favor, preencha todos os campos corretamente.",
-        icon: "error",
-      });
+
+      this.authService.login(valueSubmit.username, valueSubmit.password).subscribe(
+        (response) => {
+          console.log(response);
+          
+          Swal.fire({
+            title: "Sucesso!",
+            text: "Login Realizado com sucesso!",
+            icon: "success",
+          }).then(() => {
+            this.router.navigate(["/user"]);
+          });
+        },
+        (error) => {
+          console.error("Erro ao logar na conta", error);
+          Swal.fire({
+            title: "Erro",
+            text: "Ocorreu um erro ao logar na conta.",
+            icon: "error",
+          });
+        }
+      );
+
     }
-  }
-}
-
-function isValidLogin(email: string, password: string): boolean {
-  const validEmail = "";
-  const validPassword = "";
-
-  
-  if (email === validEmail && password === validPassword) {
-    return true;
-  } else {
-    return false;
   }
 }

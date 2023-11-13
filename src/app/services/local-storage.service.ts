@@ -9,7 +9,7 @@ export class LocalStorageService {
 
   public get(key: string) {
     let object = localStorage.getItem(key);
-    return object ? JSON.parse(object) : null;
+    return object && object.includes("{") ? JSON.parse(object) : object;
   }
 
   public set(key: string, value: any) {
@@ -22,6 +22,10 @@ export class LocalStorageService {
     let object = this.get(key);
     localStorage.removeItem(key);
     return object;
+  }
+
+  public clear() {
+    localStorage.clear();
   }
 
 }
