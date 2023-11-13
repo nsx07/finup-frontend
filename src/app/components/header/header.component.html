@@ -1,26 +1,33 @@
-
-<!-- component -->
-<!-- follow me on twitter @asad_codes -->
-
-<div class="flex flex-wrap h-screen">
+<div class="flex flex-wrap h-full">
   <section class="relative mx-auto">
-      <!-- navbar -->
-    <nav class="flex justify-between bg-gray-900 text-white w-screen">
-      <div class="px-5 xl:px-12 py-6 flex w-full items-center">
+    <nav class="flex bg-gray-light text-white w-screen">
+      <div class="px-5 xl:px-12 py-6 flex w-full items-center justify-between">
         <a class="text-3xl font-bold font-heading" href="#">
-          <!-- <img class="h-9" src="logo.png" alt="logo"> -->
-          <img class="h-9" src="../../../assets/logo/fine-up-favicon.png" alt="">
+          <img
+            class="h-9"
+            src="../../../assets/logo/fine-up-favicon.png"
+            alt=""
+          />
         </a>
-        <!-- Nav Links -->
-        <ul class="flex mx-auto font-semibold font-heading space-x-9">
-          <li><a [routerLink]="['/login']">Login</a></li>
-          <li><a [routerLink]="['/signup']">Cadastro</a></li>
+        <ul class="flex font-semibold font-heading space-x-2">
+          <li>
+            <a
+              class="py-2 px-6 rounded-lg border-blue-light border-2"
+              routerLink="/login"
+              routerLinkActive="bg-blue-light"
+              >Login</a
+            >
+          </li>
+          <li>
+            <a
+              class="py-2 px-6 rounded-lg border-blue-light border-2"
+              routerLink="/signup"
+              routerLinkActive="bg-blue-light"
+              >Cadastro</a
+            >
+          </li>
         </ul>
-        <!-- Header Icons -->
       </div>
-      
     </nav>
-    
   </section>
 </div>
-

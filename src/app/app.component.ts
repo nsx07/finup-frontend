@@ -28,6 +28,7 @@ import { AuthService } from "./services/auth-service.service";
 
       <loader></loader>
       <p-toast></p-toast>
+      <app-header *ngIf="!showHeader"></app-header>
 
       <div class="relative">
         <router-outlet></router-outlet>
@@ -47,22 +48,23 @@ import { AuthService } from "./services/auth-service.service";
   styles: [],
 })
 export class AppComponent {
-  constructor(private primeNG: PrimeNGConfig, private router: Router, private auth: AuthService) {
+  constructor(
+    private primeNG: PrimeNGConfig,
+    private router: Router,
+    private auth: AuthService
+  ) {
     moment.locale("pt-br");
     primeNG.overlayOptions = {
       appendTo: "body",
     };
 
     router.events.subscribe((event) => {
-
       if (event instanceof NavigationEnd) {
         if (auth.isLogged && (this.isLogin || this.isSignup)) {
           this.router.navigate(["/"]);
         }
       }
-
-    })
-
+    });
   }
 
   private get isLogin() {
@@ -74,6 +76,6 @@ export class AppComponent {
   }
 
   public get showHeader() {
-    return !this.isLogin && !this.isSignup;
+    return !this.isLogin && !this.isSignup && !this.router.url.includes("home");
   }
 }
