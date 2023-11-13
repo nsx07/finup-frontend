@@ -9,6 +9,7 @@ import { AuthService } from "./services/auth-service.service";
 import { HomeComponent } from "./pages/home/home.component";
 import { InvoiceComponent } from "./crud/invoice/invoice.component";
 import { InvoiceTableComponent } from "./crud/invoice-table/invoice-table.component";
+import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "home", component: HomeComponent },
   { path: "invoice", component: InvoiceTableComponent },
+  { path: "dashboard", component: DashboardComponent },
   {
     path: "crud",
     loadChildren: () => import("./crud/crud.module").then((x) => x.CrudModule),
