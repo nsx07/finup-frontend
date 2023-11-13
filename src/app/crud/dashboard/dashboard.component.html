@@ -23,10 +23,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="hover:bg-grey-lighter">
-          <td class="py-2 px-4 border-b border-grey-light">R$100,00</td>
-          <td class="py-2 px-4 border-b border-grey-light">13/11/2023</td>
-          <td class="py-2 px-4 border-b border-grey-light">Pago</td>
+        <tr *ngFor="let invoice of invoices" class="hover:bg-grey-lighter">
+          <td class="py-2 px-4 border-b border-grey-light">
+            {{ invoice.amount }}
+          </td>
+          <td class="py-2 px-4 border-b border-grey-light">
+            {{ invoice.expirationDate | date : "dd/MM/yyyy" }}
+          </td>
+          <td class="py-2 px-4 border-b border-grey-light">
+            {{ invoice.status }}
+          </td>
         </tr>
       </tbody>
     </table>

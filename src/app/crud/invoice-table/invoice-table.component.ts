@@ -13,10 +13,10 @@ export class InvoiceTableComponent {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.fetchGoals();
+    this.fetchBill();
   }
 
-  fetchGoals(): void {
+  fetchBill(): void {
     this.apiService.requestFromApi("bill/getAll").subscribe({
       next: (data) => {
         this.invoices = data;
@@ -35,7 +35,7 @@ export class InvoiceTableComponent {
         .subscribe({
           next: () => {
             console.log("Goal deleted successfully");
-            this.fetchGoals();
+            this.fetchBill();
           },
           error: (error) => {
             console.error("Error deleting goal:", error);

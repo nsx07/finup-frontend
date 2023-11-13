@@ -37,8 +37,8 @@ export class InvoiceComponent extends FormBaseComponent implements OnInit {
   private createForm() {
     this.form = this.fb.group({
       description: ["", [Validators.required]],
-      value: ["", [Validators.required]],
-      date: ["", [Validators.required]],
+      amount: ["", [Validators.required]],
+      expirationDate: ["", [Validators.required]],
       status: ["", [Validators.required]],
     });
   }

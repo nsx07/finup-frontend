@@ -12,7 +12,11 @@ import { Router } from "@angular/router";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent extends FormBaseComponent implements OnInit {
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     super();
   }
 
@@ -31,28 +35,29 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
       // TODO: Adicione a lógica de validação do login
       // Verifique se o email e a senha são válidos
 
-      this.authService.login(valueSubmit.username, valueSubmit.password).subscribe(
-        (response) => {
-          console.log(response);
-          
-          Swal.fire({
-            title: "Sucesso!",
-            text: "Login Realizado com sucesso!",
-            icon: "success",
-          }).then(() => {
-            this.router.navigate(["/user"]);
-          });
-        },
-        (error) => {
-          console.error("Erro ao logar na conta", error);
-          Swal.fire({
-            title: "Erro",
-            text: "Ocorreu um erro ao logar na conta.",
-            icon: "error",
-          });
-        }
-      );
+      this.authService
+        .login(valueSubmit.username, valueSubmit.password)
+        .subscribe(
+          (response) => {
+            console.log(response);
 
+            Swal.fire({
+              title: "Sucesso!",
+              text: "Login Realizado com sucesso!",
+              icon: "success",
+            }).then(() => {
+              this.router.navigate(["/dashboard"]);
+            });
+          },
+          (error) => {
+            console.error("Erro ao logar na conta", error);
+            Swal.fire({
+              title: "Erro",
+              text: "Ocorreu um erro ao logar na conta.",
+              icon: "error",
+            });
+          }
+        );
     }
   }
 }

@@ -30,19 +30,19 @@
           <div class="w-full md:w-1/2 px-3 mt-6 md:mt-0">
             <label
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              for="value"
+              for="amount"
             >
               Valor
             </label>
             <input
               [ngClass]="{
                 'border-red-500':
-                  form.get('value')?.invalid && form.get('value')?.touched
+                  form.get('amount')?.invalid && form.get('amount')?.touched
               }"
               class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="value"
+              id="amount"
               type="text"
-              formControlName="value"
+              formControlName="amount"
               placeholder="R$"
             />
           </div>
@@ -52,19 +52,20 @@
           <div class="w-full md:w-1/2 px-3 md:mb-0">
             <label
               class="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              for="date"
+              for="expirationDate"
             >
               Data
             </label>
             <input
               [ngClass]="{
                 'border-red-500':
-                  form.get('date')?.invalid && form.get('date')?.touched
+                  form.get('expirationDate')?.invalid &&
+                  form.get('expirationDate')?.touched
               }"
               class="appearance-none block w-full bg-gray-200 text-gray-700 border-gray-200 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="date"
+              id="expirationDate"
               type="date"
-              formControlName="date"
+              formControlName="expirationDate"
             />
           </div>
 

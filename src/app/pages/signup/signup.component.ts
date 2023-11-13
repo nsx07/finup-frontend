@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { FormBaseComponent } from "../../shared/form-base.component";
 import { IFormCanDeactivate } from "../../guards/iform-candeactivate";
 import { FormValidators } from "../../shared/form-validators";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-signup",
@@ -18,7 +19,11 @@ export class SignupComponent
   private formChanges: boolean = false;
   private formSubmitted = false;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {
     super();
   }
 
@@ -45,7 +50,7 @@ export class SignupComponent
           text: "Usuário criado com sucesso!",
           icon: "success",
         }).then(() => {
-          // Redirecione o usuário ou faça qualquer outra ação necessária
+          this.router.navigate(["/login"]);
         });
       },
       (error) => {
