@@ -50,10 +50,11 @@ export class InvoiceComponent extends FormBaseComponent implements OnInit {
         next: (data) => {
           this.form.patchValue({
             description: data.description,
-            value: data.amount,
-            date: data.expirationDate,
+            amount: data.amount,
+            expirationDate: data.expirationDate.substring(0,10),
             status: data.status,
           });
+          console.log(data)
         },
         error: (error) => {
           console.error("Error loading invoice details:", error);
