@@ -20,6 +20,7 @@ const routes: Routes = [
       { path: "goal", component: GoalComponent },
       { path: "goal/:id", component: GoalComponent },
       { path: "user", component: UserComponent },
+      { path: "user/:id", component: UserComponent },
       { path: "goalTable", component: GoalTableComponent },
       { path: "userTable", component: UserTableComponent },
       {

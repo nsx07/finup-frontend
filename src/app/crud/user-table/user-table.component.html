@@ -17,9 +17,14 @@
           <td class="px-6 py-4">{{user.email}}</td>
           <td class="px-6 py-4">
             <a
-              href="#"
-              class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              class="font-medium text-blue-light dark:text-blue-light hover:underline mr-3 cursor-pointer"
+              (click)="onEdit(user.id)"
               >Edit</a
+            >
+            <a
+              class="font-medium text-blue-light dark:text-blue-light hover:underline cursor-pointer"
+              (click)="onDelete(user)"
+              >Delete</a
             >
           </td>
         </tr>

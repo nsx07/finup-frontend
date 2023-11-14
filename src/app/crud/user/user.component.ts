@@ -6,6 +6,7 @@ import { FormBuilder } from "@angular/forms";
 import { FormValidators } from "../../shared/form-validators";
 import { ApiService } from "../../services/api-service.service";
 import { AuthService } from "../../services/auth-service.service";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-user",
@@ -15,17 +16,47 @@ import { AuthService } from "../../services/auth-service.service";
 export class UserComponent extends FormBaseComponent implements OnInit {
   userData: any;
 
+  itsMine = true;
+  header = "Minha conta";
+  user: any;
+  id! : number; 
+
   constructor(
     private fb: FormBuilder,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
     private authService: AuthService
   ) {
     super();
+    
+    
   }
 
-  ngOnInit(): void {
+  getById(id : number) {
+    return this.apiService.requestFromApi(`user/getById/${id}`).toPromise();
+  }
+
+  async ngOnInit() {
+    
+
     this.createForm();
     this.getLoggedUser();
+
+    let id = this.activatedRoute.snapshot.params["id"]
+    
+    if (id && Number.isInteger(+id) && id > 0) {
+      this.user = await this.getById(id);
+      console.log(this.user);
+      this.id = this.user.id;
+      this.header = this.userData.email === this.user.email ? "Minha conta" : this.user.name;
+      this.itsMine = this.userData.email === this.user.email;
+      this.populateForm(this.user);
+    } else {
+      this.populateForm(this.userData);
+      this.id = this.userData.id;
+    }
+
     console.log(this.userData);
   }
 
@@ -41,25 +72,32 @@ export class UserComponent extends FormBaseComponent implements OnInit {
 
   getLoggedUser(): void {
     this.userData = this.authService.getUserData();
-    this.populateForm();
   }
 
-  populateForm(): void {
-    if (this.userData) {
+  populateForm(form : any): void {
+    if (form) {
       this.form.patchValue({
-        name: this.userData.name,
-        email: this.userData.email,
-        dateBirth: this.userData.dateBirth,
+        name: form.name,
+        email: form.email,
+        dateBirth: form.dateBirth.substring(0,10)
       });
     }
   }
 
   override submit(): void {
     const form = this.form.value;
+    
 
-    this.apiService.sendToApi("user/save", form).subscribe({
+    this.apiService.updateApi("user/update", {...form, id: this.id}).subscribe({
       next: (data) => {
         console.log(data);
+
+        if (this.itsMine) {
+          setTimeout(() => {
+            this.authService.logout("É necessário fazer login novamente para atualizar os dados");
+          }, 100);
+        }
+
         if (data) {
           this.form.reset();
         }

@@ -103,7 +103,7 @@ export class ApiService {
       // Server-side errors
       errorMessage = `Error Code: ${error.status}\\nMessage: ${error.message}`;
 
-      if (error.status > 400) {
+      if (error.status > 400 && error.status <= 403) {
         errorMessage = error.error.message;
         setTimeout(() => self.auth.logout("Sua sessão expirou, faça login novamente."), 100);
       }
